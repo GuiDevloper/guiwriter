@@ -1,9 +1,8 @@
 ---
-blog: true
 readingShow: false
-title: Test2 by GuiDevloper
+title: Games
 heroText: GuiWriter
-description: Escritos aleatórios de GuiDevloper
+description: 'Escritos jogáveis de GuiDevloper'
 image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
-permalink: /tests/2
+permalink: /games
 ---

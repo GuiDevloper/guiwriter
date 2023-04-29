@@ -41,6 +41,7 @@
       />
     </template>
   </ParentLayout>
+  <GoatCounter code="guiwriter" />
 </template>
 
 <script setup lang="ts">
@@ -51,6 +52,7 @@ import { computed } from 'vue'
 import { CustomPageFrontmatter, getPublishDate } from '../components/view-utils'
 import {
   Home,
+  GoatCounter,
   BlogPostTags,
   ReadingProgress,
   Tag

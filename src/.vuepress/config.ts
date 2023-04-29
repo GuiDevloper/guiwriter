@@ -43,7 +43,7 @@ export default defineUserConfig({
       name: 'GuiDevloper',
       twitter: 'GuiDevloper'
     },
-    hostname: '',
+    hostname: 'https://guiwriter.vercel.app',
     navbar: [
       {
         text: 'Autor',

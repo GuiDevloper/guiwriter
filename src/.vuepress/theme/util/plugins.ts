@@ -1,6 +1,7 @@
 import type { App, DefaultThemeOptions, PluginObject } from 'vuepress'
 import { fs, path } from '@vuepress/utils'
 import mediumZoomPlugin from '@vuepress/plugin-medium-zoom'
+import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
 import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { blogPlugin } from 'vuepress-plugin-blog2'
@@ -125,6 +126,9 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
       zoomOptions: {
         background: '#212530'
       }
+    }),
+    sitemapPlugin({
+      hostname: options.hostname
     }),
     readingTimePlugin,
     noMismatchPlugin,

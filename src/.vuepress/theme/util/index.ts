@@ -57,22 +57,25 @@ export function capitalize(text: string) {
 
 export function getSidebar() {
   const posts = getPostsPaths()
-  return posts.reduce((acc, post) => {
-    const folder = capitalize(post.split('/')[0])
-    const href = `/${post}`
-    const existIndex = acc.findIndex(v => v.text === folder)
-    if (existIndex === -1) {
-      return [
-        ...acc,
-        {
-          text: folder,
-          // children: [href],
-          // collapsible: true
-          link: `/${folder.toLowerCase()}/`
-        }
-      ]
-    }
-    // acc[existIndex].children.push(href)
-    return acc
-  }, [] as SidebarGroup[])
+  return posts.reduce(
+    (acc, post) => {
+      const folder = capitalize(post.split('/')[0])
+      const href = `/${post}`
+      const existIndex = acc.findIndex(v => v.text === folder)
+      if (existIndex === -1) {
+        return [
+          ...acc,
+          {
+            text: folder,
+            // children: [href],
+            // collapsible: true
+            link: `/${folder.toLowerCase()}/`
+          }
+        ]
+      }
+      // acc[existIndex].children.push(href)
+      return acc
+    },
+    [{ text: 'Home', link: '/' }] as SidebarGroup[]
+  )
 }

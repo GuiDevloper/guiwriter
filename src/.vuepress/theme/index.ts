@@ -17,6 +17,11 @@ export default (options: ThemeOptions): Theme => {
     // path to the client config of your theme
     clientConfigFile: path.resolve(__dirname, 'client.ts'),
 
+    alias: {
+      // set alias for replaceable components
+      '@theme/Page.vue': path.resolve(__dirname, 'components/Page.vue')
+    },
+
     extendsPage: page => {
       page.data['pages'] = getFronters()
     }

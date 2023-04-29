@@ -1,0 +1,80 @@
+.toggle-sidebar-button
+  display block
+
+div[class*="language-"] pre,
+div[class*="language-"] pre[class*="language-"]
+  margin 0
+  padding 1rem
+
+.code-copy svg
+  width 1.4rem !important
+  height 1.4rem !important
+  top 0.4rem !important
+
+.code-copy path:last-child
+  fill none
+  stroke #2e7a58
+
+div[class*="language-"]::before
+  display none
+
+.page .theme-default-content
+  padding-top 2rem
+
+.navbar, .sidebar
+  background rgba(255, 255, 255, 80%)
+  backdrop-filter blur(3px)
+  border none
+
+.sidebar
+  padding 0
+  margin-top 3.6rem
+
+.dark
+  .navbar
+    background transparent
+  .sidebar
+    background rgba(37, 38, 43, 80%)
+
+.blog-date-reading
+  margin 0
+
+.page
+  padding-top 0
+  padding-bottom 0
+
+.navbar
+  padding .7rem 1.5rem .7rem 4rem
+
+.navbar .site-name
+  color var(--textColor)
+
+.theme-container .search-box input
+  background-color transparent !important
+  background-image url(/icons/search.svg)
+  background-size 1rem
+  border none
+
+.blog-link
+  color inherit
+  transition 200ms
+  &.active
+    color #3eaf7c
+  &:hover
+    text-decoration underline
+    color #3eaf7c
+
+/**
+ * transition fade-slide-y
+ */
+.fade-slide-y-enter-active,
+.fade-slide-y-leave-active
+  transition all 100ms ease
+
+.no-transition .page
+  transition none
+
+@media (max-width: 959px)
+  .back-blog
+    padding-top var(--navbar-height)
+  

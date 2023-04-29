@@ -31,6 +31,7 @@ const frontmatter = computed(() => {
 </script>
 
 <style scoped lang="stylus">
+@require '../styles/index'
 .home
   padding $navbarHeight 0 0
 

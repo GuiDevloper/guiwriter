@@ -1,6 +1,6 @@
 import { path } from '@vuepress/utils'
 import { defaultTheme, Theme } from 'vuepress'
-import { ThemeOptions } from './util'
+import { getFronters, ThemeOptions } from './util'
 
 export default (options: ThemeOptions): Theme => {
   // returns a theme object
@@ -15,7 +15,11 @@ export default (options: ThemeOptions): Theme => {
     }),
 
     // path to the client config of your theme
-    clientConfigFile: path.resolve(__dirname, 'client.ts')
+    clientConfigFile: path.resolve(__dirname, 'client.ts'),
+
+    extendsPage: page => {
+      page.data['pages'] = getFronters()
+    }
 
     // other plugin APIs are also available
   }

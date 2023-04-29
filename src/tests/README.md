@@ -1,7 +1,7 @@
 ---
 readingShow: false
-title: GuiWriter by GuiDevloper
-heroText: GuiWriter
+title: Test by GuiDevloper
+heroText: Test!
 description: Escritos aleatórios de GuiDevloper
 image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
 ---

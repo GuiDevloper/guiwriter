@@ -1,0 +1,4 @@
+# robots.txt for https://guiwriter.vercel.app/
+
+User-agent: *
+Sitemap: https://guiwriter.vercel.app/sitemap.xml

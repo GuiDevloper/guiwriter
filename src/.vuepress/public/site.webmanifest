@@ -1,0 +1,59 @@
+{
+	"name": "GuiWriter",
+	"short_name": "GuiWriter",
+	"icons": [
+		{
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-96-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-72-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-48-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+		{
+      "src": "https://guiwriter.vercel.app/icons/android/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+	],
+	"theme_color": "#c44644",
+  "background_color": "#25262b",
+	"display": "standalone",
+	"start_url": "https://guiwriter.vercel.app/",
+	"url": "https://guiwriter.vercel.app/",
+	"lang": "pt-BR",
+	"screenshots": [],
+	"description": "Blog of writings from GuiDevloper",
+  "dir": "ltr",
+  "scope": "/",
+  "orientation": "portrait"
+}

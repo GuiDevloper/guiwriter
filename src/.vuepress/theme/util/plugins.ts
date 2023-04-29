@@ -1,4 +1,5 @@
-import type { DefaultThemeOptions, PluginObject } from 'vuepress'
+import type { App, DefaultThemeOptions, PluginObject } from 'vuepress'
+import { fs, path } from '@vuepress/utils'
 import mediumZoomPlugin from '@vuepress/plugin-medium-zoom'
 import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
@@ -11,6 +12,32 @@ export type ThemeOptions = DefaultThemeOptions & {
   author: {
     name: string
     twitter?: string
+  }
+}
+
+const noMismatchPlugin: PluginObject = {
+  name: 'no-mismatch-plugin',
+  onGenerated(app: App) {
+    const indexFilePath = path.join(app.dir.dest(), 'index.html')
+    const indexFile = fs.readFileSync(indexFilePath, 'utf-8')
+    // try to add width/height to logo
+    try {
+      const newIndexFile = indexFile.replace(
+        'src="/icons/android/android-launchericon-72-72.png"',
+        'src="/icons/android/android-launchericon-72-72.png" width="35px" height="35px"'
+      )
+      fs.writeFileSync(indexFilePath, newIndexFile)
+    } catch {}
+    const frameworkMatch = indexFile.match(/assets\/framework.[a-z0-9]+.js/g)
+    if (!frameworkMatch) return
+
+    const frameworkFilePath = path.join(app.dir.dest(), frameworkMatch[0])
+    const frameworkFile = fs.readFileSync(frameworkFilePath, 'utf-8')
+    const newFrameworkFile = frameworkFile.replace(
+      'console.error("Hydration completed but contains mismatches.")',
+      'false'
+    )
+    fs.writeFileSync(frameworkFilePath, newFrameworkFile)
   }
 }
 
@@ -100,6 +127,7 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
       }
     }),
     readingTimePlugin,
+    noMismatchPlugin,
     pwaPlugin(),
     seoPlugin(options),
     blogPlugin({

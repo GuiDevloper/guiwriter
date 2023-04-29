@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "ES2020",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "noEmit": true
+  }
+}

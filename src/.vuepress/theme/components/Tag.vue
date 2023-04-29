@@ -32,13 +32,11 @@ const currentItems = tagMap.value.currentItems?.map(v => v.info) || []
 </script>
 
 <style lang="stylus" scoped>
-@use '@vuepress/theme-default/styles/mixins'
-
 .page
-  padding-top var(--navbar-height)
+  padding-top $navbarHeight
 
 .tag-wrapper
-  @include mixins.content_wrapper
+  content_wrapper()
   font-size 14px
   padding 1rem
   max-width 650px

@@ -50,7 +50,7 @@ const backgroundImage = {
   color #e2e1db
 
 .blog-post__title
-	margin 0.5rem 0 0
+  margin 0.5rem 0 0
   font-size 1.5rem
 
 .blog-post__date

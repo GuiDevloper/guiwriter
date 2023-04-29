@@ -32,6 +32,7 @@ const currentItems = tagMap.value.currentItems?.map(v => v.info) || []
 </script>
 
 <style lang="stylus" scoped>
+@require '../styles/mixins'
 .page
   padding-top $navbarHeight
 

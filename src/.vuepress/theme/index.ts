@@ -1,6 +1,7 @@
 import { path } from '@vuepress/utils'
 import { defaultTheme, Theme, ViteBundlerOptions } from 'vuepress'
 import { getFronters, ThemeOptions } from './util'
+import { getPlugins } from './util'
 
 export default (options: ThemeOptions): Theme => {
   // returns a theme object
@@ -16,6 +17,8 @@ export default (options: ThemeOptions): Theme => {
 
     // path to the client config of your theme
     clientConfigFile: path.resolve(__dirname, 'client.ts'),
+
+    plugins: getPlugins(options),
 
     alias: {
       // set alias for replaceable components

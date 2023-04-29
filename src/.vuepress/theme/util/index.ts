@@ -3,6 +3,7 @@ import { CustomPageFrontmatter } from 'theme/components/view-utils'
 import { fileURLToPath } from 'url'
 import { DefaultThemeOptions } from 'vuepress'
 import matter from 'gray-matter'
+export * from './plugins'
 
 export type ThemeOptions = DefaultThemeOptions & {
   site_name: string

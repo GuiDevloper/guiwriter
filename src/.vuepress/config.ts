@@ -1,5 +1,33 @@
-import { defineUserConfig } from 'vuepress'
+import { Plugin, defineUserConfig } from 'vuepress'
 import CustomTheme from './theme'
+
+import searchPlugin from '@vuepress/plugin-search'
+import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
+import { clipboardPlugin } from 'vuepress-plugin-clipboard'
+function getUserPlugins(): Plugin[] {
+  return [
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Pesquisar'
+        }
+      }
+    }),
+    pwaPopupPlugin({
+      locales: {
+        '/': {
+          message: 'Novo conteúdo disponível.',
+          buttonText: 'Atualizar'
+        }
+      }
+    }),
+    clipboardPlugin({
+      successText: 'Copiado!',
+      align: 'top',
+      staticIcon: true
+    })
+  ]
+}
 
 export default defineUserConfig({
   title: 'GuiWriter',
@@ -17,6 +45,12 @@ export default defineUserConfig({
     },
     hostname: ''
   }),
+  markdown: {
+    code: {
+      lineNumbers: false
+    }
+  },
+  plugins: getUserPlugins(),
   head: [
     [
       'link',

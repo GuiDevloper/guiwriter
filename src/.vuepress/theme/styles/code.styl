@@ -1,0 +1,9 @@
+@require './fallback'
+
+div[class*="language-"]
+  bgColor $codeBgColorDefault var(--codeBgColor)
+  .highlight-lines
+    padding-top 2.5rem
+    line-height 1.4
+    .highlight-line
+      bgColor $codeBgHighlightColorDefault var(--codeBgHighlightColor)

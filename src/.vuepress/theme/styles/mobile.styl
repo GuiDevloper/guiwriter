@@ -1,0 +1,24 @@
+@require './config'
+
+.sidebar
+  top 0
+  padding-top $navbarHeight
+  transform translateX(-100%)
+.page
+  padding-left 0
+.theme-container
+  &.sidebar-open
+    .sidebar
+      transform translateX(0)
+  &.no-navbar
+    .sidebar
+      padding-top: 0
+
+// narrow mobile
+@media (max-width: $MQMobileNarrow)
+  h1
+    font-size 1.6rem
+  {$contentClass}
+    div[class*="language-"]
+      margin 0.85rem -1.5rem
+      border-radius 0

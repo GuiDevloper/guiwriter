@@ -19,6 +19,7 @@
           <em v-html="image.description"></em>
         </section>
       </template>
+      <Tag v-else-if="frontmatter.blog?.type === 'category'" />
       <Home v-else-if="!frontmatter.blog" />
     </template>
 
@@ -48,7 +49,12 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
 import { CustomPageFrontmatter, getPublishDate } from '../components/view-utils'
-import { Home, BlogPostTags, ReadingProgress } from '../components/index.vue'
+import {
+  Home,
+  BlogPostTags,
+  ReadingProgress,
+  Tag
+} from '../components/index.vue'
 
 type ReadingTimeObject = {
   readingTime: {

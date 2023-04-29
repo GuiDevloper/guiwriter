@@ -43,7 +43,14 @@ export default defineUserConfig({
       name: 'GuiDevloper',
       twitter: 'GuiDevloper'
     },
-    hostname: ''
+    hostname: '',
+    navbar: [
+      {
+        text: 'Autor',
+        link: 'https://beacons.ai/GuiDevloper',
+        ariaLabel: 'Links do Autor'
+      }
+    ]
   }),
   markdown: {
     code: {

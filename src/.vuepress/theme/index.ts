@@ -1,9 +1,10 @@
 import { path } from '@vuepress/utils'
 import { defaultTheme, Theme, ViteBundlerOptions } from 'vuepress'
-import { getFronters, ThemeOptions } from './util'
+import { getFrontmatters, getSidebar, ThemeOptions } from './util'
 import { getPlugins } from './util'
 
 export default (options: ThemeOptions): Theme => {
+  options.sidebar = getSidebar()
   // returns a theme object
   return {
     name: 'vuepress-theme-succinct',
@@ -34,7 +35,7 @@ export default (options: ThemeOptions): Theme => {
     },
 
     extendsPage: page => {
-      page.data['pages'] = getFronters()
+      page.data['pages'] = getFrontmatters()
     }
 
     // other plugin APIs are also available

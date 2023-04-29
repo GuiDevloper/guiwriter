@@ -1,7 +1,7 @@
 import { path, fs } from '@vuepress/utils'
 import { CustomPageFrontmatter } from 'theme/components/view-utils'
 import { fileURLToPath } from 'url'
-import { DefaultThemeOptions } from 'vuepress'
+import { DefaultThemeOptions, SidebarGroup } from 'vuepress'
 import matter from 'gray-matter'
 export * from './plugins'
 
@@ -37,7 +37,7 @@ export function getPostsPaths() {
   return posts
 }
 
-export function getFronters() {
+export function getFrontmatters() {
   const posts = getPostsPaths()
   return posts.map(post => {
     const fullPath = path.join(postsDir, post)
@@ -49,4 +49,30 @@ export function getFronters() {
       description: ''
     }
   })
+}
+
+export function capitalize(text: string) {
+  return `${text[0].toUpperCase()}${text.substring(1)}`
+}
+
+export function getSidebar() {
+  const posts = getPostsPaths()
+  return posts.reduce((acc, post) => {
+    const folder = capitalize(post.split('/')[0])
+    const href = `/${post}`
+    const existIndex = acc.findIndex(v => v.text === folder)
+    if (existIndex === -1) {
+      return [
+        ...acc,
+        {
+          text: folder,
+          // children: [href],
+          // collapsible: true
+          link: `/${folder.toLowerCase()}/`
+        }
+      ]
+    }
+    // acc[existIndex].children.push(href)
+    return acc
+  }, [] as SidebarGroup[])
 }

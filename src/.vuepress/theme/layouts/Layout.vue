@@ -2,6 +2,7 @@
   <ParentLayout>
     <template #page-top>
       <template v-if="frontmatter.blog === true">
+        <ReadingProgress />
         <section
           v-if="image"
           :class="{
@@ -47,7 +48,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
 import { CustomPageFrontmatter, getPublishDate } from '../components/view-utils'
-import { Home, BlogPostTags } from '../components/index.vue'
+import { Home, BlogPostTags, ReadingProgress } from '../components/index.vue'
 
 type ReadingTimeObject = {
   readingTime: {

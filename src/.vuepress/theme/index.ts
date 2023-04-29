@@ -1,5 +1,5 @@
 import { path } from '@vuepress/utils'
-import { defaultTheme, Theme } from 'vuepress'
+import { defaultTheme, Theme, ViteBundlerOptions } from 'vuepress'
 import { getFronters, ThemeOptions } from './util'
 
 export default (options: ThemeOptions): Theme => {
@@ -20,6 +20,14 @@ export default (options: ThemeOptions): Theme => {
     alias: {
       // set alias for replaceable components
       '@theme/Page.vue': path.resolve(__dirname, 'components/Page.vue')
+    },
+
+    extendsBundlerOptions(options: ViteBundlerOptions) {
+      options.viteOptions = {
+        build: {
+          sourcemap: false
+        }
+      }
     },
 
     extendsPage: page => {

@@ -16,13 +16,13 @@
     "@vuepress/plugin-search": "2.0.0-beta.61",
     "@vuepress/theme-default": "2.0.0-beta.61",
     "@vuepress/utils": "2.0.0-beta.61",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "gray-matter": "^4.0.3",
     "stylus": "^0.59.0",
     "vue": "^3.2.47",
     "vuepress": "2.0.0-beta.61",
-    "vuepress-plugin-blog2": "2.0.0-beta.206",
-    "vuepress-plugin-clipboard": "^2.1.5",
-    "vuepress-plugin-sitemap2": "2.0.0-beta.206"
+    "vuepress-plugin-blog2": "2.0.0-beta.207",
+    "vuepress-plugin-clipboard": "2.1.5",
+    "vuepress-plugin-sitemap2": "2.0.0-beta.207"
   }
 }

@@ -6,6 +6,7 @@ import GoatCounter from './GoatCounter.vue'
 import Home from './Home.vue'
 import ReadingProgress from './ReadingProgress.vue'
 import Tag from './Tag.vue'
+import Giscus from './Giscus.vue'
 
 export {
   BlogPostList,
@@ -14,7 +15,8 @@ export {
   GoatCounter,
   Home,
   ReadingProgress,
-  Tag
+  Tag,
+  Giscus
 }
 export default {}
 </script>

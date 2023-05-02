@@ -40,6 +40,13 @@
         :tags="frontmatter.tags"
       />
     </template>
+
+    <template
+      #page-bottom
+      v-if="frontmatter.blog === true"
+    >
+      <Giscus />
+    </template>
   </ParentLayout>
   <GoatCounter code="guiwriter" />
 </template>
@@ -55,7 +62,8 @@ import {
   GoatCounter,
   BlogPostTags,
   ReadingProgress,
-  Tag
+  Tag,
+  Giscus
 } from '../components/index.vue'
 
 type ReadingTimeObject = {

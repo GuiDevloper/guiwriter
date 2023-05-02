@@ -4,6 +4,7 @@ import CustomTheme from './theme'
 import searchPlugin from '@vuepress/plugin-search'
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 import { clipboardPlugin } from 'vuepress-plugin-clipboard'
+import { commentPlugin } from 'vuepress-plugin-comment2'
 function getUserPlugins(): Plugin[] {
   return [
     searchPlugin({
@@ -25,6 +26,20 @@ function getUserPlugins(): Plugin[] {
       successText: 'Copiado!',
       align: 'top',
       staticIcon: true
+    }),
+    commentPlugin({
+      provider: 'Giscus',
+      repo: 'GuiDevloper/guiwriter',
+      repoId: 'R_kgDOJcrPiQ',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOJcrPic4CWMFL',
+      mapping: 'og:title',
+      strict: true,
+      reactionsEnabled: true,
+      inputPosition: 'top',
+      darkTheme: 'transparent_dark',
+      lang: 'pt',
+      lazyLoading: true
     })
   ]
 }

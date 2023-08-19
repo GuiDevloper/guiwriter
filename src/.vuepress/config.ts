@@ -38,7 +38,6 @@ function getUserPlugins(): Plugin[] {
       reactionsEnabled: true,
       inputPosition: 'top',
       darkTheme: 'transparent_dark',
-      lang: 'pt',
       lazyLoading: true
     })
   ]

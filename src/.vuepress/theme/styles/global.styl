@@ -105,14 +105,14 @@ div[class*="language-"]::before
   display flex
   flex-direction column
   &.not-full
-    margin-top 4rem
+    margin var(--navbar-height) auto 0
     max-width 740px
   img
     width 100%
     max-width 1600px
-    margin 0 auto 5px
+    margin-bottom 5px
 
 @media (max-width: 959px)
-  .back-blog
+  .back-blog:not(.not-full)
     padding-top var(--navbar-height)
   

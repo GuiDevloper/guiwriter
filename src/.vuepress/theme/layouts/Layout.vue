@@ -28,11 +28,12 @@
       v-if="frontmatter.blog === true"
     >
       <p class="blog-date-reading">
-        <time :datetime="frontmatter.date?.toString()">
+        <time :datetime="frontmatter.date?.toString()" class="publish-date">
           {{ publishDate }}
         </time>
         <template v-if="readingTime">
-          {{ ` - ${readingTime.minutes} min de leitura` }}
+          <span class="reading-time-separator"> - </span>
+          {{ `${readingTime.minutes} min de leitura` }}
         </template>
       </p>
       <BlogPostTags

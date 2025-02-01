@@ -3,7 +3,15 @@
     class="blog-post"
     :style="backgroundImage"
   >
-    <h3 class="blog-post__title">{{ item.title }}</h3>
+    <h3 class="blog-post__title">
+      <router-link
+        v-if="item.permalink"
+        :to="item.permalink"
+        class="blog-link"
+      >
+        {{ item.title }}
+      </router-link>
+    </h3>
     <time class="blog-post__date">{{ publishDate }}</time>
     <p
       v-if="item.excerpt"
@@ -12,13 +20,6 @@
     ></p>
     <div class="blog-post__content tags-grid">
       <BlogPostTags :tags="item.tags" />
-      <router-link
-        v-if="item.permalink"
-        :to="item.permalink"
-        class="blog-link active"
-      >
-        {{ 'Ler Mais >' }}
-      </router-link>
     </div>
   </section>
 </template>
@@ -52,6 +53,8 @@ const backgroundImage = {
 .blog-post__title
   margin 0.5rem 0 0
   font-size 1.5rem
+  .blog-link
+    font-weight inherit
 
 .blog-post__date
   font-size 0.8rem

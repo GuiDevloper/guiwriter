@@ -4,13 +4,14 @@
     v-if="tags.length > 0"
   >
     <b>Tags: </b>
-    <router-link
-      class="blog-link"
-      v-for="(tag, i) in tags"
-      :to="`/tag/${tag}/`"
-    >
-      {{ `${tag}${i < tags.length - 1 ? ', ' : ''}` }}
-    </router-link>
+    <template v-for="(tag, i) in tags">
+      <router-link
+        class="blog-link"
+        :to="`/tag/${tag}/`"
+      >
+        {{ tag }} </router-link
+      >{{ i < tags.length - 1 ? ', ' : '' }}
+    </template>
   </p>
 </template>
 
@@ -31,4 +32,6 @@ const { tags } = defineProps({
   text-overflow ellipsis
   white-space nowrap
   margin-right 1rem
+  .blog-link
+    text-decoration underline
 </style>

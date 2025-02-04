@@ -56,26 +56,24 @@ export function capitalize(text: string) {
 }
 
 export function getSidebar() {
-  const posts = getPostsPaths()
-  return posts.reduce(
-    (acc, post) => {
-      const folder = capitalize(post.split('/')[0])
-      const href = `/${post}`
-      const existIndex = acc.findIndex(v => v.text === folder)
-      if (existIndex === -1) {
-        return [
-          ...acc,
-          {
-            text: folder,
-            // children: [href],
-            // collapsible: true
-            link: `/${folder.toLowerCase()}/`
-          }
-        ]
-      }
-      // acc[existIndex].children.push(href)
-      return acc
-    },
-    [{ text: 'Home', link: '/' }] as SidebarGroup[]
-  )
+  const files = fs.readdirSync(postsDir, {
+    withFileTypes: true
+  })
+  let final = files.reduce((acc, file) => {
+    if (!file.isDirectory() || file.name === '.vuepress') return acc
+    const { data } = matter(
+      fs.readFileSync(path.join(postsDir, file.name, 'README.md'), 'utf8')
+    )
+    acc.push({
+      text: data.title,
+      link: data.permalink,
+      children: []
+      // collapsible: true,
+    })
+    // acc[existIndex].children.push(href)
+    return acc
+  }, [] as SidebarGroup[])
+  final = final.sort((a, b) => a.text.length - b.text.length)
+  final.unshift({ text: 'Home', link: '/', children: [] })
+  return final
 }

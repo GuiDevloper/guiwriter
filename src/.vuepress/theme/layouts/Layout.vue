@@ -27,8 +27,14 @@
       #page-content-top
       v-if="frontmatter.blog === true"
     >
-      <p class="blog-date-reading">
-        <time :datetime="frontmatter.date?.toString()" class="publish-date">
+      <p
+        class="blog-date-reading"
+        :class="{ 'reading-no-image': !image }"
+      >
+        <time
+          :datetime="frontmatter.date?.toString()"
+          class="publish-date"
+        >
           {{ publishDate }}
         </time>
         <template v-if="readingTime">

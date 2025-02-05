@@ -16,7 +16,10 @@
             :src="image.url"
             class="zoom-img"
           />
-          <em v-html="image.description"></em>
+          <em
+            v-if="image.description"
+            v-html="image.description"
+          ></em>
         </section>
       </template>
       <Tag v-else-if="frontmatter.blog?.type === 'category'" />

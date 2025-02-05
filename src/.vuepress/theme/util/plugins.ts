@@ -76,6 +76,15 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
           : ''
       }
 
+      // in production, make the image url absolute (fixes og:image)
+      if (
+        process.env.NODE_ENV !== 'development' &&
+        ctx.image !== undefined &&
+        !ctx.image.startsWith('https://')
+      ) {
+        ctx.image = options.hostname + ctx.image
+      }
+
       add('property', [
         ['article:published_time', ctx.publishedAt],
         ['og:site_name', ctx.siteTitle],

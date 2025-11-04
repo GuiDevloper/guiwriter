@@ -1,7 +1,15 @@
-import { path, fs } from '@vuepress/utils'
+import { path, fs } from 'vuepress/utils'
 import { CustomPageFrontmatter } from 'theme/components/view-utils'
 import { fileURLToPath } from 'url'
-import { DefaultThemeOptions, SidebarGroup } from 'vuepress'
+// import { DefaultThemeOptions, SidebarGroup } from 'vuepress'
+import {
+  AutoLinkOptions,
+  DefaultThemeOptions,
+  NavbarGroupOptions,
+  NavbarLinkOptions,
+  SidebarGroupOptions,
+  SidebarOptions
+} from '@vuepress/theme-default'
 import matter from 'gray-matter'
 export * from './plugins'
 
@@ -66,14 +74,14 @@ export function getSidebar() {
     )
     acc.push({
       text: data.title,
-      link: data.permalink,
-      children: []
-      // collapsible: true,
+      link: data.permalink
+      // children: []
+      // collapsible: true
     })
     // acc[existIndex].children.push(href)
     return acc
-  }, [] as SidebarGroup[])
+  }, [] as AutoLinkOptions[])
   final = final.sort((a, b) => a.text.length - b.text.length)
-  final.unshift({ text: 'Home', link: '/', children: [] })
+  // final.unshift({ text: 'Home', link: '/' })
   return final
 }

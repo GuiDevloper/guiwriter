@@ -1,17 +1,44 @@
-import { path } from '@vuepress/utils'
-import { defaultTheme, Theme, ViteBundlerOptions } from 'vuepress'
+import { path } from 'vuepress/utils'
+import { Theme } from 'vuepress'
+import { defaultTheme } from '@vuepress/theme-default'
 import { getFrontmatters, getSidebar, ThemeOptions } from './util'
 import { getPlugins } from './util'
+import { ViteBundlerOptions } from '@vuepress/bundler-vite'
 
 export default (options: ThemeOptions): Theme => {
-  options.sidebar = getSidebar()
+  const sidebarList = getSidebar()
   // returns a theme object
   return {
     name: 'vuepress-theme-succinct',
     extends: defaultTheme({
       themePlugins: {
         mediumZoom: false,
-        git: false
+        hint: false,
+        git: { filter: () => false },
+        sitemap: {
+          hostname: options.hostname
+        },
+        copyCode: {
+          locales: {
+            '/': {
+              copied: 'Copiado!',
+              copy: 'Copiar'
+            }
+          },
+          showInMobile: true
+        },
+        backToTop: {
+          locales: {
+            '/': {
+              backToTop: 'Voltar ao topo'
+            }
+          },
+          progress: false
+        }
+      },
+      sidebar: {
+        '/': 'heading',
+        '/tag/': false
       },
       ...options
     }),
@@ -36,6 +63,7 @@ export default (options: ThemeOptions): Theme => {
 
     extendsPage: page => {
       page.data['pages'] = getFrontmatters()
+      page.data['sidebar'] = sidebarList
     }
 
     // other plugin APIs are also available

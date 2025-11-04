@@ -15,6 +15,7 @@ thumbnail: '/thumbs/dicionario-hardware.png'
 permalink: /dict/dicionario-hardware
 tags:
   - 'hardware'
+sidebar: false
 ---
 
 # Meu Dicionário de Hardware (Atualizável)

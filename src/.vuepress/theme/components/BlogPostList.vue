@@ -6,6 +6,7 @@
     >
       <li
         v-for="item in filteredPages"
+        :key="item.permalink"
         class="blog-list__item"
       >
         <BlogPostPreview :item="item" />
@@ -39,7 +40,7 @@ const filteredPages = computed(() => {
 
 <style lang="stylus" scoped>
 .blog-list
-  padding 0 1rem
+  // padding 0 1rem
   margin 0 auto
   max-width 650px
 

@@ -1,29 +1,40 @@
 <template>
   <ParentLayout>
     <template #page-top>
-      <template v-if="frontmatter.blog === true">
-        <ReadingProgress />
-        <section
-          v-if="image"
-          :class="{
-            'image-text back-blog': true,
-            'not-full': !image.full
-          }"
+      <Tag v-if="frontmatter.blog?.type === 'category'" />
+      <section
+        v-if="frontmatter.blog && image"
+        :class="{
+          'image-text back-blog': true,
+          'not-full': !image.full
+        }"
+      >
+        <img
+          :alt="image.alt"
+          :title="image.alt"
+          :src="image.url"
+          class="zoom-img"
+        />
+        <em
+          v-if="image.description"
+          v-html="image.description"
+        ></em>
+      </section>
+    </template>
+
+    <template #sidebar-top>
+      <nav class="vp-sidebar-items">
+        <RouteLink
+          class="auto-link vp-sidebar-item vp-sidebar-heading"
+          :to="s.link"
+          aria-label="Artigos tecnológicos"
+          :active="frontmatter.permalink == s.link"
+          active-class="active"
+          v-for="s in pageData.sidebar"
         >
-          <img
-            :alt="image.alt"
-            :title="image.alt"
-            :src="image.url"
-            class="zoom-img"
-          />
-          <em
-            v-if="image.description"
-            v-html="image.description"
-          ></em>
-        </section>
-      </template>
-      <Tag v-else-if="frontmatter.blog?.type === 'category'" />
-      <Home v-else-if="!frontmatter.blog" />
+          {{ s.text }}
+        </RouteLink>
+      </nav>
     </template>
 
     <template
@@ -42,7 +53,7 @@
         </time>
         <template v-if="readingTime">
           <span class="reading-time-separator"> - </span>
-          {{ `${readingTime.minutes} min de leitura` }}
+          {{ readingTime }}
         </template>
       </p>
       <BlogPostTags
@@ -58,14 +69,17 @@
       <Giscus />
     </template>
   </ParentLayout>
+
+  <Home v-if="frontmatter.home" />
+
   <GoatCounter code="guiwriter" />
 </template>
 
 <script setup lang="ts">
 // @ts-ignore
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed } from 'vue'
+import { RouteLink, usePageData, usePageFrontmatter } from 'vuepress/client'
+import { computed, onMounted } from 'vue'
 import { CustomPageFrontmatter, getPublishDate } from '../components/view-utils'
 import {
   Home,
@@ -75,20 +89,25 @@ import {
   Tag,
   Giscus
 } from '../components/index.vue'
+import { AutoLinkOptions } from '@vuepress/theme-default'
 
-type ReadingTimeObject = {
+type CustomPageData = {
   readingTime: {
     minutes: string
   }
+  sidebar: AutoLinkOptions[]
 }
 
+const pageData = usePageData<CustomPageData>()
 const readingTime = computed(() => {
-  return usePageData<ReadingTimeObject>().value.readingTime
+  const { minutes } = pageData.value.readingTime
+  if (!minutes) return
+  let time = +`${minutes}`.split('.')[0]
+  if (time < 1) return 'Leitura rapidinha ⚡'
+  return `${time} min de leitura`
 })
 
-const frontmatter = computed(() => {
-  return usePageFrontmatter<CustomPageFrontmatter>().value
-})
+const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
 
 const publishDate = computed(() => getPublishDate(frontmatter.value.date))
 
@@ -96,3 +115,23 @@ const image = computed(() => frontmatter.value.Image)
 </script>
 
 <style lang="stylus" src="../styles/index.styl" />
+
+<style lang="stylus" scoped>
+.vp-sidebar-items
+  padding-bottom 0
+  .vp-sidebar-item
+    padding-block 0.8rem
+
+/*
+.vp-sidebar .vp-navbar-item
+  padding-left 2rem
+
+.vp-sidebar-items .custom-sidebar-item
+  // font-size: 1.1em;
+  // padding-left: 1rem;
+  // padding-block: 0;
+  line-height 2
+  font-weight 600
+  font-size 1.1em
+*/
+</style>

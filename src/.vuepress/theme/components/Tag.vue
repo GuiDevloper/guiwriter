@@ -1,6 +1,6 @@
 <template>
-  <section class="page">
-    <div class="tag-wrapper">
+  <section class="tag-wrapper">
+    <div class="tag-list">
       <RouterLink
         v-for="({ items, path }, name) in tagMap.map"
         :to="path"
@@ -17,26 +17,20 @@
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
-import { useBlogCategory } from 'vuepress-plugin-blog2/client'
-import type { Ref } from 'vue'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { BlogPostList } from './index.vue'
 
-type TagMap = {
-  map: [{ items: object[]; path: string }]
-  currentItems: [{ info: object }]
-}
-
-const tagMap: Ref<TagMap> = useBlogCategory('tag')
+const tagMap = useBlogCategory('tag')
 const currentItems = tagMap.value.currentItems?.map(v => v.info) || []
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 @require '../styles/mixins'
-.page
-  padding-top $navbarHeight
 
-.tag-wrapper
+.tag-wrapper .blog-list
+  padding 0 1rem !important
+
+.tag-list
   content_wrapper()
   font-size 14px
   padding 1rem
@@ -55,6 +49,6 @@ const currentItems = tagMap.value.currentItems?.map(v => v.info) || []
       font-size 0.7rem
       line-height 1.2rem
     &.router-link-active
-      background var(--c-brand)
-      color var(--c-bg)
+      background var(--accentColor)
+      color var(--bodyBgColor)
 </style>

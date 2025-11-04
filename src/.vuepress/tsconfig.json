@@ -3,7 +3,7 @@
     "baseUrl": "./",
     "module": "ES2020",
     "esModuleInterop": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "noEmit": true
   }

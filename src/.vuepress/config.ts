@@ -1,10 +1,12 @@
+import { viteBundler } from '@vuepress/bundler-vite'
 import { Plugin, defineUserConfig } from 'vuepress'
 import CustomTheme from './theme'
 
-import searchPlugin from '@vuepress/plugin-search'
-import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
-import { clipboardPlugin } from 'vuepress-plugin-clipboard'
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { searchPlugin } from '@vuepress/plugin-search'
+// import { clipboardPlugin } from 'vuepress-plugin-clipboard'
+import { commentPlugin } from '@vuepress/plugin-comment'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { getSidebar } from './theme/util'
 function getUserPlugins(): Plugin[] {
   return [
     searchPlugin({
@@ -14,19 +16,21 @@ function getUserPlugins(): Plugin[] {
         }
       }
     }),
-    pwaPopupPlugin({
+    pwaPlugin({
       locales: {
         '/': {
-          message: 'Novo conteúdo disponível.',
-          buttonText: 'Atualizar'
+          update: 'Novo conteúdo disponível.',
+          install: 'Atualizar'
         }
       }
     }),
+    /*
     clipboardPlugin({
       successText: 'Copiado!',
       align: 'top',
       staticIcon: true
     }),
+    */
     commentPlugin({
       provider: 'Giscus',
       repo: 'GuiDevloper/guiwriter',
@@ -66,11 +70,8 @@ export default defineUserConfig({
       }
     ]
   }),
-  markdown: {
-    code: {
-      lineNumbers: false
-    }
-  },
+  bundler: viteBundler(),
+  shouldPrefetch: false,
   plugins: getUserPlugins(),
   head: [
     [

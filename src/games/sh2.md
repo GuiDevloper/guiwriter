@@ -7,7 +7,7 @@ Image:
   {
     alt: 'Cachorro da raça Shiba sorrindo de satisfação',
     url: 'https://ik.imagekit.io/GuiDevloper/guiwriter/games/sh2.jpg',
-    desc: "Foto de <a href='https://unsplash.com/@dearskye' target='_blank' rel='nofollow noopener noreferrer'>Christal Yuen</a> no Unsplash",
+    description: "Foto de <a href='https://unsplash.com/@dearskye' target='_blank' rel='nofollow noopener noreferrer'>Christal Yuen</a> no Unsplash",
     full: true
   }
 description: 'Mergulhando nos frutos de boa atuação que podem transformar a experiência e vida de jogadores.'

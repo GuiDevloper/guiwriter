@@ -3,7 +3,7 @@
     class="blog-post"
     :style="backgroundImage"
   >
-    <h3 class="blog-post__title">
+    <h3 class="blog-post title">
       <router-link
         v-if="item.permalink"
         :to="item.permalink"
@@ -12,13 +12,13 @@
         {{ item.title }}
       </router-link>
     </h3>
-    <time class="blog-post__date">{{ publishDate }}</time>
+    <time class="blog-post date">{{ publishDate }}</time>
     <p
       v-if="item.excerpt"
       v-html="item.excerpt"
-      class="blog-post__content"
+      class="blog-post content"
     ></p>
-    <div class="blog-post__content tags-grid">
+    <div class="blog-post content tags-grid">
       <BlogPostTags :tags="item.tags" />
     </div>
   </section>
@@ -41,7 +41,7 @@ const backgroundImage = {
 </script>
 
 <style lang="stylus" scoped>
-.blog-post
+section.blog-post
   background-color #25262b
   background-size cover
   background-position center
@@ -50,16 +50,17 @@ const backgroundImage = {
   margin-bottom 2rem
   color #e2e1db
 
-.blog-post__title
+.blog-post .title
   margin 0.5rem 0 0
   font-size 1.5rem
+  padding 0
   .blog-link
     font-weight inherit
 
-.blog-post__date
+.blog-post .date
   font-size 0.8rem
 
-.blog-post__content
+.blog-post .content
   font-size 1rem
   margin 1% 0
 

@@ -1,18 +1,23 @@
 @require './variables'
 
-.sidebar
+.vp-sidebar
   top 0
   padding-top $navbarHeight
-  transform translateX(-100%)
+  // transform translateX(-100%) !important
+  // display block !important
 .page
   padding-left 0
-.theme-container
+.vp-theme-container
   &.sidebar-open
-    .sidebar
-      transform translateX(0)
+    .vp-sidebar
+      // transform translateX(0) !important
+      // display block !important
   &.no-navbar
-    .sidebar
+    .vp-sidebar
       padding-top: 0
+  &.no-sidebar
+    .vp-sidebar
+      display block !important
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow)
@@ -22,3 +27,8 @@
     div[class*="language-"]
       margin 0.85rem -1.5rem
       border-radius 0
+
+// mobile
+@media (min-width: $MQMobile)
+  .vp-home, .blog-list, .vp-page
+    padding-inline-start var(--sidebar-width) !important

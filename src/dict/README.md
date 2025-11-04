@@ -2,7 +2,8 @@
 readingShow: false
 title: Dicionários
 heroText: GuiWriter
-description: 'Dicionários de GuiDevloper'
+tagline: 'Dicionários de GuiDevloper'
 image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
-permalink: /dict
+permalink: /dict/
+home: true
 ---

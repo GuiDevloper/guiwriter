@@ -25,6 +25,7 @@ export type CustomPageFrontmatter = PageFrontmatter & {
   image?: string
   tags?: string[]
   heroText?: string
+  tagline?: string
   blog?: boolean & {
     type: string
     tag: string

@@ -1,44 +1,24 @@
 <template>
-  <div class="home">
-    <div class="hero">
-      <h1 class="home-title">
-        {{ frontmatter.heroText }}
-      </h1>
-
-      <h2 class="home-description">
-        {{ frontmatter.description }}
-      </h2>
-    </div>
-
-    <BlogPostList
-      :pages="pages"
-      :pageData="frontmatter"
-    />
-  </div>
+  <BlogPostList
+    :pages="pages"
+    :pageData="frontmatter"
+  />
 </template>
 
 <script setup lang="ts">
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed } from 'vue'
+import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import { BlogPostList } from './index.vue'
 import { CustomPageFrontmatter } from './view-utils'
 
-const pages = computed(() => usePageData().value['pages'])
+const pages = usePageData<{ pages: CustomPageFrontmatter[] }>().value.pages
 
-const frontmatter = computed(() => {
-  return usePageFrontmatter<CustomPageFrontmatter>().value
-})
+const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
 @require '../styles/index'
-.home
-  padding $navbarHeight 0 0
 
-.home-description
+.vp-hero-description
+  font-weight 600
   text $descriptionColorDefault var(--descriptionColor)
-
-@media (max-width: $MQMobileNarrow)
-  .home-description
-    font-size 1.2rem
 </style>

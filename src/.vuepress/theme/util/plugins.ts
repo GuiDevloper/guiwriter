@@ -1,10 +1,10 @@
-import type { App, DefaultThemeOptions, PluginObject } from 'vuepress'
-import { fs, path } from '@vuepress/utils'
-import mediumZoomPlugin from '@vuepress/plugin-medium-zoom'
-import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
-import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
-import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { blogPlugin } from 'vuepress-plugin-blog2'
+import type { App, Plugin, PluginObject } from 'vuepress'
+import { path, fs } from 'vuepress/utils'
+import { DefaultThemeOptions } from '@vuepress/theme-default'
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
+// import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
+import { readingTimePlugin } from '@vuepress/plugin-reading-time'
+import { blogPlugin } from '@vuepress/plugin-blog'
 import type { CustomPage } from '../components/view-utils'
 
 export type ThemeOptions = DefaultThemeOptions & {
@@ -62,7 +62,8 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
       const ctx = {
         siteTitle: options.site_name,
         title: page.frontmatter.title || page.title || 'Home',
-        description: page.frontmatter.description || '',
+        description:
+          page.frontmatter.description || page.frontmatter.tagline || '',
         author: page.frontmatter.author || options.author,
         tags: page.frontmatter.tags,
         twitterCard: 'summary_large_image',
@@ -95,6 +96,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
         ['og:image', ctx.image]
       ])
       add('name', [['twitter:card', ctx.twitterCard]])
+      add('name', [['description', ctx.description]])
 
       if (page.frontmatter.Image?.alt) {
         add('name', [['twitter:image:alt', page.frontmatter.Image.alt]])
@@ -128,7 +130,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
   }
 }
 
-export function getPlugins(options: ThemeOptions): PluginObject[] {
+export function getPlugins(options: ThemeOptions): Plugin[] {
   return [
     mediumZoomPlugin({
       selector: '.zoom-img',
@@ -136,12 +138,8 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
         background: '#212530'
       }
     }),
-    sitemapPlugin({
-      hostname: options.hostname
-    }),
-    readingTimePlugin,
+    readingTimePlugin(),
     noMismatchPlugin,
-    pwaPlugin(),
     seoPlugin(options),
     blogPlugin({
       filter: ({ filePathRelative, frontmatter }) => {

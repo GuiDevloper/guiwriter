@@ -21,9 +21,6 @@ tags:
 
 # Nullstack Instances: Bom código melhorando o próprio futuro
 
-> - Índice
->   [[toc]]
-
 Já tendo desenvolvido projetos com linguagens como Java, PHP e C# e frameworks como Angular, sempre expresso o quanto busco por ferramentas otimizadas, seja na parte do desenvolvedor ou na do usuário final.
 
 E minha mais recente descoberta que supre tal busca é o framework brasileiro Nullstack.

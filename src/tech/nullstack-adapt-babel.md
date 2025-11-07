@@ -21,9 +21,6 @@ tags:
 
 # Nullstack + Babel: Renovando o antigo compilador
 
-> - Índice
->   [[toc]]
-
 [Babel](https://babeljs.io/) esteve presente desde os primórdios da web moderna traduzindo sintaxes diversas do JavaScript, como de versões novas (ex: ES2020), para aquela padronizada e suportada pelo maior número de navegadores (ex: ES5). E até hoje isso tem espaço respeitado nas propostas da própria linguagem do JS (ex: [do expressions](https://babeljs.io/docs/babel-plugin-proposal-do-expressions)).
 
 Sendo tão salvador, pode-se imaginar que existiram fortes razões para propor a implementação do novo compilador [SWC](https://swc.rs) no Nullstack. E sim, como eu mesmo fui o principal idealizador disso, posso afirmar: De performance e leveza à simplicidade de algo baseado em [Rust](https://rust-lang.org/pt-BR/), projetos como SWC representam uma grande mudança em como se desenvolve a web.

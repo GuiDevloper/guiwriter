@@ -6,6 +6,8 @@ import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 import { blogPlugin } from '@vuepress/plugin-blog'
 import type { CustomPage } from '../components/view-utils'
 
+const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
+
 export type ThemeOptions = DefaultThemeOptions & {
   site_name: string
   hostname: string
@@ -44,7 +46,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
         url: options.hostname + page.path,
         image: page.frontmatter.Image
           ? page.frontmatter.Image.url
-          : page.frontmatter.image,
+          : page.frontmatter.image || SITE_LOGO,
         publishedAt: page.frontmatter.date
           ? new Date(page.frontmatter.date).toISOString()
           : ''
@@ -122,7 +124,7 @@ export function getPlugins(options: ThemeOptions): Plugin[] {
         if (filePathRelative.startsWith('archives/')) return false
 
         // drop those pages which do not use default layout
-        if (frontmatter.heroText || frontmatter.layout) return false
+        if (frontmatter.home || frontmatter.layout) return false
 
         return true
       },
@@ -134,8 +136,8 @@ export function getPlugins(options: ThemeOptions): Plugin[] {
           tags: frontmatter.tags || [],
           excerpt: frontmatter.excerpt || '',
           title: frontmatter.title || '',
-          image: frontmatter.image || '',
-          thumbnail: frontmatter.thumbnail || frontmatter.image,
+          image: frontmatter.image || SITE_LOGO,
+          thumbnail: frontmatter.thumbnail || frontmatter.image || SITE_LOGO,
           permalink: frontmatter.permalink || ''
         }
 

@@ -20,9 +20,6 @@ tags:
 
 # Silent Hill 2: Terror que pode nos Tornar mais Humanos?
 
-> - Índice
->   [[toc]]
-
 Após ter escolhido este título do terror e procurado aproveitá-lo ao máximo até seu fim, passei a perceber que ainda restavam ideias a serem melhores processadas acerca desta obra, além das mudanças que podem gerar na percepção do jogador acerca do mundo.<br>
 As mudanças que senti foram a inspiração para este texto.
 

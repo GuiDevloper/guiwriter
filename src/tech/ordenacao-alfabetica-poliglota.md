@@ -19,9 +19,6 @@ tags:
 
 # Ordenação Alfabética de Forma Poliglota
 
-> - Índice
->   [[toc]]
-
 Olá e boas vindas!
 
 Mesmo parecendo uma tarefa simples, ordenar alfabeticamente um array em linguagens de programação traz uma oportunidade de vislumbrar suas semelhanças e como elas funcionam internamente, algo interessante para aprendizes e experientes!

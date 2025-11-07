@@ -1,4 +1,5 @@
-import { Page, PageFrontmatter } from 'vuepress'
+import { onMounted } from 'vue'
+import type { Page, PageFrontmatter } from 'vuepress'
 
 export function getPublishDate(date?: string | Date) {
   if (!date) return ''
@@ -38,4 +39,20 @@ type FrontmatterImage = {
   alt: string
   full: boolean
   description: string
+}
+
+export function activateGoatCounter(code = 'guiwriter') {
+  onMounted(() => {
+    if (process.env.NODE_ENV === 'production' && code && window) {
+      let goatcounter = document.createElement('script')
+      goatcounter.setAttribute(
+        'data-goatcounter',
+        `https://${code}.goatcounter.com/count`
+      )
+      goatcounter.setAttribute('async', 'true')
+      goatcounter.setAttribute('src', '//gc.zgo.at/count.js')
+      let s = document.getElementsByTagName('script')[0]
+      s.parentNode?.insertBefore(goatcounter, s)
+    }
+  })
 }

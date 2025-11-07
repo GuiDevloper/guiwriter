@@ -71,8 +71,6 @@
   </ParentLayout>
 
   <Home v-if="frontmatter.home" />
-
-  <GoatCounter code="guiwriter" />
 </template>
 
 <script setup lang="ts">
@@ -80,7 +78,11 @@
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { RouteLink, usePageData, usePageFrontmatter } from 'vuepress/client'
 import { computed, onMounted } from 'vue'
-import { CustomPageFrontmatter, getPublishDate } from '../components/view-utils'
+import {
+  activateGoatCounter,
+  CustomPageFrontmatter,
+  getPublishDate
+} from '../components/view-utils'
 import {
   Home,
   GoatCounter,
@@ -112,6 +114,7 @@ const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
 const publishDate = computed(() => getPublishDate(frontmatter.value.date))
 
 const image = computed(() => frontmatter.value.Image)
+activateGoatCounter()
 </script>
 
 <style lang="stylus" src="../styles/index.styl" />

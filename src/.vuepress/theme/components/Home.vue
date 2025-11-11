@@ -1,6 +1,6 @@
 <template>
   <BlogPostList
-    :pages="pages"
+    :pages="pages.pages"
     :pageData="frontmatter"
   />
 </template>
@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import { BlogPostList } from './index.vue'
-import { CustomPageFrontmatter } from './view-utils'
+import type { CustomPageFrontmatter } from './view-utils'
 
-const pages = usePageData<{ pages: CustomPageFrontmatter[] }>().value.pages
+const pages = usePageData<{ pages: CustomPageFrontmatter[] }>()
 
 const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
 </script>

@@ -20,8 +20,8 @@
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { BlogPostList } from './index.vue'
 
-const tagMap = useBlogCategory('tag')
-const currentItems = tagMap.value.currentItems?.map(v => v.info) || []
+const tagMap = useBlogCategory('tag').value
+const currentItems = tagMap.currentItems?.map(v => v.info) || []
 </script>
 
 <style lang="stylus">

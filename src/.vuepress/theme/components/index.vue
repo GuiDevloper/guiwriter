@@ -2,21 +2,19 @@
 import BlogPostList from './BlogPostList.vue'
 import BlogPostPreview from './BlogPostPreview.vue'
 import BlogPostTags from './BlogPostTags.vue'
-import GoatCounter from './GoatCounter.vue'
+import Giscus from './Giscus.vue'
 import Home from './Home.vue'
 import ReadingProgress from './ReadingProgress.vue'
 import Tag from './Tag.vue'
-import Giscus from './Giscus.vue'
 
 export {
   BlogPostList,
   BlogPostPreview,
   BlogPostTags,
-  GoatCounter,
+  Giscus,
   Home,
   ReadingProgress,
-  Tag,
-  Giscus
+  Tag
 }
 export default {}
 </script>

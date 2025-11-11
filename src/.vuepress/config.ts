@@ -2,11 +2,10 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { Plugin, defineUserConfig } from 'vuepress'
 import CustomTheme from './theme'
 
-import { searchPlugin } from '@vuepress/plugin-search'
-// import { clipboardPlugin } from 'vuepress-plugin-clipboard'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { getSidebar } from './theme/util'
+import { searchPlugin } from '@vuepress/plugin-search'
+
 function getUserPlugins(): Plugin[] {
   return [
     searchPlugin({
@@ -24,13 +23,6 @@ function getUserPlugins(): Plugin[] {
         }
       }
     }),
-    /*
-    clipboardPlugin({
-      successText: 'Copiado!',
-      align: 'top',
-      staticIcon: true
-    }),
-    */
     commentPlugin({
       provider: 'Giscus',
       repo: 'GuiDevloper/guiwriter',

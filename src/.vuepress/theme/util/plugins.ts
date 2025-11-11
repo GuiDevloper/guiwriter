@@ -1,23 +1,13 @@
-import type { Plugin, PluginObject } from 'vuepress'
-import { DefaultThemeOptions } from '@vuepress/theme-default'
-import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
-// import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
-import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 import { blogPlugin } from '@vuepress/plugin-blog'
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
+import { readingTimePlugin } from '@vuepress/plugin-reading-time'
+import type { Plugin, PluginObject } from 'vuepress'
 import type { CustomPage } from '../components/view-utils'
+import type { CustomThemeOptions } from '.'
 
 const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
 
-export type ThemeOptions = DefaultThemeOptions & {
-  site_name: string
-  hostname: string
-  author: {
-    name: string
-    twitter?: string
-  }
-}
-
-export function seoPlugin(options: ThemeOptions): PluginObject {
+export function seoPlugin(options: CustomThemeOptions): PluginObject {
   return {
     name: 'vuepress-plugin-seo',
     extendsPage(page: CustomPage) {
@@ -105,7 +95,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
   }
 }
 
-export function getPlugins(options: ThemeOptions): Plugin[] {
+export function getPlugins(options: CustomThemeOptions): Plugin[] {
   return [
     mediumZoomPlugin({
       selector: '.zoom-img',

@@ -74,23 +74,15 @@
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { RouteLink, usePageData, usePageFrontmatter } from 'vuepress/client'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import {
   activateGoatCounter,
   CustomPageFrontmatter,
   getPublishDate
 } from '../components/view-utils'
-import {
-  Home,
-  GoatCounter,
-  BlogPostTags,
-  ReadingProgress,
-  Tag,
-  Giscus
-} from '../components/index.vue'
+import { Home, BlogPostTags, Tag, Giscus } from '../components/index.vue'
 import { AutoLinkOptions } from '@vuepress/theme-default'
 
 type CustomPageData = {
@@ -110,10 +102,9 @@ const readingTime = computed(() => {
 })
 
 const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
-
 const publishDate = computed(() => getPublishDate(frontmatter.value.date))
-
 const image = computed(() => frontmatter.value.Image)
+
 activateGoatCounter()
 </script>
 

@@ -47,7 +47,7 @@ section.blog-post
   background-position center
   padding 2% 4%
   border-radius 5px
-  margin-bottom 2rem
+  margin-bottom 1rem
   color #e2e1db
 
 .blog-post .title

@@ -43,6 +43,7 @@ const filteredPages = computed(() => {
   // padding 0 1rem
   margin 0 auto
   max-width 650px
+  padding 0 0.5rem
 
 .blog-list__item
   list-style-type none

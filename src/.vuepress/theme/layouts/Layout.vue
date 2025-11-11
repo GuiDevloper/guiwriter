@@ -77,20 +77,9 @@
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { RouteLink, usePageData, usePageFrontmatter } from 'vuepress/client'
 import { computed } from 'vue'
-import {
-  activateGoatCounter,
-  CustomPageFrontmatter,
-  getPublishDate
-} from '../components/view-utils'
+import { activateGoatCounter, getPublishDate } from '../components/view-utils'
 import { Home, BlogPostTags, Tag, Giscus } from '../components/index.vue'
-import { AutoLinkOptions } from '@vuepress/theme-default'
-
-type CustomPageData = {
-  readingTime: {
-    minutes: string
-  }
-  sidebar: AutoLinkOptions[]
-}
+import type { CustomPageData, CustomPageFrontmatter } from '../types'
 
 const pageData = usePageData<CustomPageData>()
 const readingTime = computed(() => {

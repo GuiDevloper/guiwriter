@@ -1,21 +1,10 @@
-import type {
-  DefaultThemeOptions,
-  SidebarLinkOptions
-} from '@vuepress/theme-default'
+export * from './plugins'
+
+import type { SidebarLinkOptions } from '@vuepress/theme-default'
 import matter from 'gray-matter'
 import { fileURLToPath } from 'url'
 import { fs, path } from 'vuepress/utils'
-import type { CustomPageFrontmatter } from '../components/view-utils'
-export * from './plugins'
-
-export type CustomThemeOptions = DefaultThemeOptions & {
-  site_name: string
-  hostname: string
-  author: {
-    name: string
-    twitter?: string
-  }
-}
+import type { CustomPageFrontmatter } from '../types'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export const postsDir = path.resolve(process.cwd(), 'src')

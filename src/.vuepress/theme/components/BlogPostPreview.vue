@@ -26,8 +26,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getPublishDate, CustomPageFrontmatter } from './view-utils'
+import { getPublishDate } from './view-utils'
 import { BlogPostTags } from './index.vue'
+import type { CustomPageFrontmatter } from '../types'
 
 const { item } = defineProps<{ item: CustomPageFrontmatter }>()
 

@@ -2,12 +2,8 @@ import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress'
 import { path } from 'vuepress/utils'
-import {
-  CustomThemeOptions,
-  getFrontmatters,
-  getPlugins,
-  getSidebar
-} from './utils'
+import { getFrontmatters, getPlugins, getSidebar } from './utils'
+import type { CustomThemeOptions } from './types'
 
 export default (options: CustomThemeOptions): Theme => {
   const sidebarList = getSidebar()

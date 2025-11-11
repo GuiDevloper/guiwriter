@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import { BlogPostList } from './index.vue'
-import type { CustomPageFrontmatter } from './view-utils'
+import type { CustomPageData, CustomPageFrontmatter } from '../types'
 
-const pages = usePageData<{ pages: CustomPageFrontmatter[] }>()
+const pages = usePageData<CustomPageData>()
 
 const frontmatter = usePageFrontmatter<CustomPageFrontmatter>()
 </script>

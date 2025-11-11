@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { BlogPostPreview } from './index.vue'
-import type { CustomPageFrontmatter } from './view-utils'
+import type { CustomPageFrontmatter } from '../types'
 
 const { pages, pageData } = defineProps<{
   pages: CustomPageFrontmatter[]

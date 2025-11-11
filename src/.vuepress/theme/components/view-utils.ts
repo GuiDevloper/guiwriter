@@ -1,5 +1,4 @@
 import { onMounted } from 'vue'
-import type { Page, PageFrontmatter } from 'vuepress'
 
 export function getPublishDate(date?: string | Date) {
   if (!date) return ''
@@ -15,30 +14,6 @@ export function getPublishDate(date?: string | Date) {
   const partValues = parts.map(p => p.value)
 
   return partValues.slice(0, 3).join('') + ', ' + partValues[4]
-}
-
-export type CustomPage = Page & {
-  frontmatter: CustomPageFrontmatter
-}
-
-export type CustomPageFrontmatter = PageFrontmatter & {
-  Image?: FrontmatterImage
-  image?: string
-  tags?: string[]
-  heroText?: string
-  tagline?: string
-  blog?: boolean & {
-    type: string
-    tag: string
-    name: string
-  }
-}
-
-type FrontmatterImage = {
-  url: string
-  alt: string
-  full: boolean
-  description: string
 }
 
 export function activateGoatCounter(code = 'guiwriter') {

@@ -2,8 +2,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 import type { Plugin, PluginObject } from 'vuepress'
-import type { CustomPage } from '../components/view-utils'
-import type { CustomThemeOptions } from '.'
+import type { CustomPage, CustomThemeOptions } from '../types'
 
 const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
 

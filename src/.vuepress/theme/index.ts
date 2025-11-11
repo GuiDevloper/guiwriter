@@ -7,7 +7,7 @@ import {
   getFrontmatters,
   getPlugins,
   getSidebar
-} from './util'
+} from './utils'
 
 export default (options: CustomThemeOptions): Theme => {
   const sidebarList = getSidebar()

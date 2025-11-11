@@ -11,6 +11,7 @@ import {
 
 export default (options: CustomThemeOptions): Theme => {
   const sidebarList = getSidebar()
+  const { themePlugins, ...otherOptions } = options
   // returns a theme object
   return {
     name: 'vuepress-theme-succinct',
@@ -22,29 +23,13 @@ export default (options: CustomThemeOptions): Theme => {
         sitemap: {
           hostname: options.hostname
         },
-        copyCode: {
-          locales: {
-            '/': {
-              copied: 'Copiado!',
-              copy: 'Copiar'
-            }
-          },
-          showInMobile: true
-        },
-        backToTop: {
-          locales: {
-            '/': {
-              backToTop: 'Voltar ao topo'
-            }
-          },
-          progress: false
-        }
+        ...themePlugins
       },
       sidebar: {
         '/': 'heading',
         '/tag/': false
       },
-      ...options
+      ...otherOptions
     }),
 
     // path to the client config of your theme

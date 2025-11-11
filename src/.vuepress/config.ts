@@ -1,5 +1,6 @@
 import { viteBundler } from '@vuepress/bundler-vite'
-import { Plugin, defineUserConfig } from 'vuepress'
+import type { DefaultThemePluginsOptions } from '@vuepress/theme-default'
+import { HeadConfig, Plugin, Theme, defineUserConfig } from 'vuepress'
 import CustomTheme from './theme'
 
 import { commentPlugin } from '@vuepress/plugin-comment'
@@ -39,33 +40,30 @@ function getUserPlugins(): Plugin[] {
   ]
 }
 
-export default defineUserConfig({
-  title: 'GuiWriter',
-  theme: CustomTheme({
-    lastUpdated: false,
-    logo: '/icons/android/android-launchericon-72-72.png',
-    colorMode: 'dark',
-    openInNewWindow: 'Abrir em nova aba',
-    toggleColorMode: 'Trocar tema',
-    toggleSidebar: 'Alternar sidebar',
-    site_name: 'GuiWriter',
-    author: {
-      name: 'GuiDevloper',
-      twitter: 'GuiDevloper'
-    },
-    hostname: 'https://guiwriter.vercel.app',
-    navbar: [
-      {
-        text: 'Autor',
-        link: 'https://beacons.ai/GuiDevloper',
-        ariaLabel: 'Links do Autor'
+function getThemePlugins(): DefaultThemePluginsOptions {
+  return {
+    copyCode: {
+      showInMobile: true,
+      locales: {
+        '/': {
+          copied: 'Copiado!',
+          copy: 'Copiar'
+        }
       }
-    ]
-  }),
-  bundler: viteBundler(),
-  shouldPrefetch: false,
-  plugins: getUserPlugins(),
-  head: [
+    },
+    backToTop: {
+      progress: false,
+      locales: {
+        '/': {
+          backToTop: 'Voltar ao topo'
+        }
+      }
+    }
+  }
+}
+
+function getUserHeadTags(): HeadConfig[] {
+  return [
     [
       'link',
       {
@@ -95,7 +93,42 @@ export default defineUserConfig({
         content: 'width=device-width, initial-scale=1'
       }
     ]
-  ],
+  ]
+}
+
+function getTheme(): Theme {
+  return CustomTheme({
+    lastUpdated: false,
+    logo: '/icons/android/android-launchericon-72-72.png',
+    colorMode: 'dark',
+    openInNewWindow: 'Abrir em nova aba',
+    toggleColorMode: 'Trocar tema',
+    toggleSidebar: 'Alternar sidebar',
+    site_name: 'GuiWriter',
+    author: {
+      name: 'GuiDevloper',
+      twitter: 'GuiDevloper'
+    },
+    hostname: 'https://guiwriter.vercel.app',
+    navbar: [
+      {
+        text: 'Autor',
+        link: 'https://beacons.ai/GuiDevloper',
+        ariaLabel: 'Links do Autor'
+      }
+    ],
+    themePlugins: getThemePlugins()
+  })
+}
+
+export default defineUserConfig({
+  title: 'GuiWriter',
+  theme: getTheme(),
+  bundler: viteBundler(),
+  plugins: getUserPlugins(),
+  head: getUserHeadTags(),
+  // disabling as service work already does
+  shouldPrefetch: false,
   locales: {
     '/': {
       lang: 'pt-BR'

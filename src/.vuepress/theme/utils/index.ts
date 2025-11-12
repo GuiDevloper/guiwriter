@@ -51,21 +51,28 @@ export function getSidebar() {
   const files = fs.readdirSync(postsDir, {
     withFileTypes: true
   })
+  let authorRoute = null
   let final = files.reduce((acc, file) => {
     if (!file.isDirectory() || file.name === '.vuepress') return acc
     const { data } = matter(
       fs.readFileSync(path.join(postsDir, file.name, 'README.md'), 'utf8')
     )
-    acc.push({
+    const link = {
       text: data.title,
       link: data.permalink
       // children: []
       // collapsible: true
-    })
+    }
+    if (data.permalink === '/links/') {
+      authorRoute = link
+    } else {
+      acc.push(link)
+    }
     // acc[existIndex].children.push(href)
     return acc
   }, [] as SidebarLinkOptions[])
   final = final.sort((a, b) => a.text.length - b.text.length)
+  final.unshift(authorRoute)
   // final.unshift({ text: 'Home', link: '/' })
   return final
 }

@@ -32,6 +32,7 @@ export type CustomPageFrontmatter = PageFrontmatter & {
   tags?: string[]
   heroText?: string
   tagline?: string
+  raw?: boolean
   blog?: boolean & {
     type: string
     tag: string

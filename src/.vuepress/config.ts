@@ -110,6 +110,7 @@ function getTheme(): Theme {
       twitter: 'GuiDevloper'
     },
     hostname: 'https://guiwriter.vercel.app',
+    /*
     navbar: [
       {
         text: 'Autor',
@@ -117,6 +118,7 @@ function getTheme(): Theme {
         ariaLabel: 'Links do Autor'
       }
     ],
+    */
     themePlugins: getThemePlugins()
   })
 }

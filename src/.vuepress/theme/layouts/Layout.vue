@@ -70,7 +70,7 @@
     </template>
   </ParentLayout>
 
-  <Home v-if="frontmatter.home" />
+  <Home v-if="frontmatter.home && !frontmatter.raw" />
 </template>
 
 <script setup lang="ts">

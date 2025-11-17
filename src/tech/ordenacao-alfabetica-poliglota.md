@@ -189,7 +189,7 @@ E são essas visões da TI que quero seguir compartilhando 🥳🎉
 
 Agradeço a atenção e até 🚀
 
-### Fontes e Futuras Ideias
+## Fontes e Futuras Ideias
 
 - [Is JavaScript Array Sort Stable?](https://geeksforgeeks.org/is-javascript-array-sort-stable/)
 - [How JavaScript sorts? TimSort algorithm](https://dev.to/bekmurzintimur/how-arrayprototypesort-works-3kcn)

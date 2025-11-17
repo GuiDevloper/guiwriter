@@ -1,5 +1,7 @@
 import { onMounted } from 'vue'
 
+export const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
+
 export function getPublishDate(date?: string | Date) {
   if (!date) return ''
 

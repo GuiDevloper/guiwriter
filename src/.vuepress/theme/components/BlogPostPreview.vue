@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getPublishDate } from './view-utils'
+import { getPublishDate, SITE_LOGO } from './view-utils'
 import { BlogPostTags } from './index.vue'
 import type { CustomPageFrontmatter } from '../types'
 
@@ -34,10 +34,11 @@ const { item } = defineProps<{ item: CustomPageFrontmatter }>()
 
 const publishDate = computed(() => getPublishDate(item.date))
 const backgroundImage = {
-  'background-image': item.thumbnail
-    ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  'background-image':
+    item.thumbnail && item.thumbnail !== SITE_LOGO
+      ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
       url(${item.thumbnail})`
-    : 'initial'
+      : 'initial'
 }
 </script>
 
@@ -50,10 +51,11 @@ section.blog-post
   border-radius 5px
   margin-bottom 1rem
   color #e2e1db
+  border 1px #171717 solid
 
 .blog-post .title
   margin 0.5rem 0 0
-  font-size 1.5rem
+  // font-size 1.5rem
   padding 0
   .blog-link
     font-weight inherit

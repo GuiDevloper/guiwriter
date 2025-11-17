@@ -3,8 +3,7 @@ import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 import type { Plugin, PluginObject } from 'vuepress'
 import type { CustomPage, CustomThemeOptions } from '../types'
-
-const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
+import { SITE_LOGO } from '../components/view-utils'
 
 export function seoPlugin(options: CustomThemeOptions): PluginObject {
   return {

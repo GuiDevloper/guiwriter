@@ -134,7 +134,7 @@ export function getPlugins(options: CustomThemeOptions): Plugin[] {
       category: [
         {
           key: 'tag',
-          getter: ({ frontmatter }: CustomPage) => frontmatter.tags
+          getter: ({ frontmatter }: CustomPage) => frontmatter.tags || []
         }
       ]
     })

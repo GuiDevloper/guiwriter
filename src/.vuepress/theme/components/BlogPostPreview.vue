@@ -18,7 +18,10 @@
       v-html="item.excerpt"
       class="blog-post content"
     ></p>
-    <div class="blog-post content tags-grid">
+    <div
+      v-if="item.tags"
+      class="blog-post content tags-grid"
+    >
       <BlogPostTags :tags="item.tags" />
     </div>
   </section>

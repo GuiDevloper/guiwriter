@@ -12,14 +12,14 @@
         {{ item.title }}
       </router-link>
     </h3>
-    <time class="blog-post date">{{ publishDate }}</time>
+    <!--<time class="blog-post date">{{ publishDate }}</time>-->
     <p
       v-if="item.excerpt"
       v-html="item.excerpt"
       class="blog-post content"
     ></p>
     <div
-      v-if="item.tags"
+      v-if="item.tags && item.excerpt"
       class="blog-post content tags-grid"
     >
       <BlogPostTags :tags="item.tags" />
@@ -55,10 +55,13 @@ section.blog-post
   margin-bottom 1rem
   color #e2e1db
   border 1px #171717 solid
+  font-size 1rem
 
 .blog-post .title
-  margin 0.5rem 0 0
+  margin 0.1rem 0 0
+  // margin 0
   // font-size 1.5rem
+  font-size 20px
   padding 0
   .blog-link
     font-weight inherit
@@ -67,8 +70,7 @@ section.blog-post
   font-size 0.8rem
 
 .blog-post .content
-  font-size 1rem
-  margin 1% 0
+  margin 1% 0 0
 
 .tags-grid
   display grid

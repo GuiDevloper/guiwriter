@@ -1,6 +1,6 @@
 ---
 title: 'Linux Mint: Terminal com Título Dinâmico'
-date: '2025-11-17'
+date: '2025-11-10'
 blog: true
 permalink: /tech/terminal-titulo-dinamico
 tags:

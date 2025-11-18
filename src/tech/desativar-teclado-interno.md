@@ -1,6 +1,6 @@
 ---
 title: 'Linux Mint: Desativando Teclado Interno de Laptop'
-date: '2025-11-17'
+date: '2025-10-14'
 blog: true
 permalink: /tech/desativar-teclado-interno
 tags:

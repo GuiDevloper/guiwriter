@@ -1,6 +1,6 @@
 ---
 title: 'Linux Mint: Encurtando o Caminho Mostrado no Terminal'
-date: '2025-11-17'
+date: '2025-10-20'
 blog: true
 permalink: /tech/terminal-caminho-encurtado
 tags:

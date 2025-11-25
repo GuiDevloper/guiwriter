@@ -24,5 +24,13 @@
   },
   "pnpm": {
     "neverBuiltDependencies": []
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "trailingComma": "none",
+    "semi": false,
+    "singleAttributePerLine": true,
+    "bracketSameLine": false
   }
 }

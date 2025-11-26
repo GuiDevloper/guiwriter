@@ -27,7 +27,7 @@
         <RouteLink
           class="auto-link vp-sidebar-item vp-sidebar-heading"
           :to="s.link"
-          aria-label="Artigos tecnológicos"
+          :aria-label="`Abrir página de ${s.text}`"
           :active="frontmatter.permalink == s.link"
           active-class="active"
           v-for="s in pageData.sidebar"

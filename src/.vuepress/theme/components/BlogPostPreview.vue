@@ -36,13 +36,12 @@ import type { CustomPageFrontmatter } from '../types'
 const { item } = defineProps<{ item: CustomPageFrontmatter }>()
 
 const publishDate = computed(() => getPublishDate(item.date))
-const backgroundImage = {
-  'background-image':
-    item.thumbnail && item.thumbnail !== SITE_LOGO
-      ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url(${item.thumbnail})`
-      : 'initial'
-}
+const backgroundImage =
+  item.thumbnail && item.thumbnail !== SITE_LOGO
+    ? {
+        'background-image': `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${item.thumbnail})`
+      }
+    : { border: '1px #171717 solid' }
 </script>
 
 <style lang="stylus" scoped>
@@ -54,7 +53,6 @@ section.blog-post
   border-radius 5px
   margin-bottom 1rem
   color #e2e1db
-  border 1px #171717 solid
   font-size 1rem
 
 .blog-post .title

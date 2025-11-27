@@ -6,13 +6,13 @@ excerpt: 'Projeto que renova o antigo compilador do Nullstack em Babel e traz de
 Image:
   {
     alt: 'Banner contendo o logotipo do Nullstack, do TypeScript e do Babel e a mascote do Nullstack, Nulla-chan, feliz por você estar lendo este post',
-    url: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/nullstack-adapt-babel.jpg',
+    url: '/images/nullstack-adapt-babel.webp',
     description: "Mascote Nulla-chan criada por <a href='https://artstation.com/biancazanette' target='_blank' rel='nofollow noopener noreferrer'>Bianca Zanette (Bilkaya)</a>",
     full: true
   }
 description: 'Projeto que renova o antigo compilador do Nullstack em Babel e traz de volta seu dourado sistema de plugins/presets'
-image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/nullstack-adapt-babel.jpg'
-thumbnail: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/thumbnails/nullstack-adapt-babel.jpg?updatedAt=1692402060874'
+image: '/images/nullstack-adapt-babel.webp'
+thumbnail: '/images/thumbs/nullstack-adapt-babel.webp'
 permalink: /tech/nullstack-adapt-babel
 tags:
   - 'nullstack'

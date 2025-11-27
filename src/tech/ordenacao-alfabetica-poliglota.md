@@ -6,12 +6,12 @@ excerpt: 'Colocar lista de palavras em ordem é tarefa simples e também um bom 
 Image:
   {
     alt: 'Banner escrito: Ordenação Alfabética de Forma Poliglota - Colocar lista de palavras em ordem é tarefa simples e também um bom exemplo para comparar linguagens de programação como C#, Python e JS seja para poliglota iniciante ou experiente 🌎',
-    url: '/thumbs/ordenacao-alfabetica-poliglota.png',
+    url: '/images/ordenacao-alfabetica-poliglota.webp',
     full: false
   }
 description: 'Colocar lista de palavras em ordem é tarefa simples e também um bom exemplo para comparar linguagens de programação como C#, Python e JS seja para poliglota iniciante ou experiente 🌎'
-image: '/thumbs/ordenacao-alfabetica-poliglota.png'
-thumbnail: '/thumbs/ordenacao-alfabetica-poliglota.png'
+image: '/images/ordenacao-alfabetica-poliglota.webp'
+thumbnail: '/images/thumbs/ordenacao-alfabetica-poliglota.webp'
 permalink: /tech/ordenacao-alfabetica-poliglota
 tags:
   - 'tutorial'

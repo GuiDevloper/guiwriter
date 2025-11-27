@@ -6,13 +6,13 @@ excerpt: 'Como código bem desenvolvido pode permitir a implementação de novos
 Image:
   {
     alt: 'Banner contendo código embaçado ao fundo, logotipo do framework Javascript Nullstack e sua mascote, Nulla-chan, dizendo olá',
-    url: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/nullstack-instances.jpg',
+    url: '/images/nullstack-instances.webp',
     description: "Mascote Nulla-chan criada por <a href='https://artstation.com/biancazanette' target='_blank' rel='nofollow noopener noreferrer'>Bianca Zanette (Bilkaya)</a>",
     full: true
   }
 description: 'Como código bem desenvolvido pode permitir a implementação de novos recursos e manutenção futura até por novatos no projeto'
-image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/nullstack-instances.jpg'
-thumbnail: 'https://ik.imagekit.io/GuiDevloper/guiwriter/tech/thumbnails/nullstack-instances.jpg?updatedAt=1682528276671'
+image: '/images/nullstack-instances.webp'
+thumbnail: '/images/thumbs/nullstack-instances.webp'
 permalink: /tech/nullstack-instances
 tags:
   - 'nullstack'

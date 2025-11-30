@@ -6,21 +6,18 @@ excerpt: 'Colocar lista de palavras em ordem é tarefa simples e também um bom 
 Image:
   {
     alt: 'Banner escrito: Ordenação Alfabética de Forma Poliglota - Colocar lista de palavras em ordem é tarefa simples e também um bom exemplo para comparar linguagens de programação como C#, Python e JS seja para poliglota iniciante ou experiente 🌎',
-    url: '/thumbs/ordenacao-alfabetica-poliglota.png',
+    url: '/images/ordenacao-alfabetica-poliglota.webp',
     full: false
   }
 description: 'Colocar lista de palavras em ordem é tarefa simples e também um bom exemplo para comparar linguagens de programação como C#, Python e JS seja para poliglota iniciante ou experiente 🌎'
-image: '/thumbs/ordenacao-alfabetica-poliglota.png'
-thumbnail: '/thumbs/ordenacao-alfabetica-poliglota.png'
+image: '/images/ordenacao-alfabetica-poliglota.webp'
+thumbnail: '/images/thumbs/ordenacao-alfabetica-poliglota.webp'
 permalink: /tech/ordenacao-alfabetica-poliglota
 tags:
   - 'tutorial'
 ---
 
 # Ordenação Alfabética de Forma Poliglota
-
-> - Índice
->   [[toc]]
 
 Olá e boas vindas!
 
@@ -192,7 +189,7 @@ E são essas visões da TI que quero seguir compartilhando 🥳🎉
 
 Agradeço a atenção e até 🚀
 
-### Fontes e Futuras Ideias
+## Fontes e Futuras Ideias
 
 - [Is JavaScript Array Sort Stable?](https://geeksforgeeks.org/is-javascript-array-sort-stable/)
 - [How JavaScript sorts? TimSort algorithm](https://dev.to/bekmurzintimur/how-arrayprototypesort-works-3kcn)

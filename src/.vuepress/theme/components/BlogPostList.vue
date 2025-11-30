@@ -6,6 +6,7 @@
     >
       <li
         v-for="item in filteredPages"
+        :key="item.permalink"
         class="blog-list__item"
       >
         <BlogPostPreview :item="item" />
@@ -23,7 +24,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { BlogPostPreview } from './index.vue'
-import { CustomPageFrontmatter } from './view-utils'
+import type { CustomPageFrontmatter } from '../types'
 
 const { pages, pageData } = defineProps<{
   pages: CustomPageFrontmatter[]
@@ -39,9 +40,10 @@ const filteredPages = computed(() => {
 
 <style lang="stylus" scoped>
 .blog-list
-  padding 0 1rem
+  // padding 0 1rem
   margin 0 auto
   max-width 650px
+  padding 0 0.5rem
 
 .blog-list__item
   list-style-type none

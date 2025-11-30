@@ -1,4 +1,6 @@
-import { Page, PageFrontmatter } from 'vuepress'
+import { onMounted } from 'vue'
+
+export const SITE_LOGO = 'https://ik.imagekit.io/GuiDevloper/guiwriter/Logo.png'
 
 export function getPublishDate(date?: string | Date) {
   if (!date) return ''
@@ -16,25 +18,18 @@ export function getPublishDate(date?: string | Date) {
   return partValues.slice(0, 3).join('') + ', ' + partValues[4]
 }
 
-export type CustomPage = Page & {
-  frontmatter: CustomPageFrontmatter
-}
-
-export type CustomPageFrontmatter = PageFrontmatter & {
-  Image?: FrontmatterImage
-  image?: string
-  tags?: string[]
-  heroText?: string
-  blog?: boolean & {
-    type: string
-    tag: string
-    name: string
-  }
-}
-
-type FrontmatterImage = {
-  url: string
-  alt: string
-  full: boolean
-  description: string
+export function activateGoatCounter(code = 'guiwriter') {
+  onMounted(() => {
+    if (process.env.NODE_ENV === 'production' && code && window) {
+      let goatcounter = document.createElement('script')
+      goatcounter.setAttribute(
+        'data-goatcounter',
+        `https://${code}.goatcounter.com/count`
+      )
+      goatcounter.setAttribute('async', 'true')
+      goatcounter.setAttribute('src', '//gc.zgo.at/count.js')
+      let s = document.getElementsByTagName('script')[0]
+      s.parentNode?.insertBefore(goatcounter, s)
+    }
+  })
 }

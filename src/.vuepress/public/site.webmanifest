@@ -1,8 +1,8 @@
 {
-	"name": "GuiWriter",
-	"short_name": "GuiWriter",
-	"icons": [
-		{
+  "name": "GuiWriter",
+  "short_name": "GuiWriter",
+  "icons": [
+    {
       "src": "https://guiwriter.vercel.app/icons/android/android-launchericon-512-512.png",
       "sizes": "512x512",
       "type": "image/png",
@@ -38,21 +38,21 @@
       "type": "image/png",
       "purpose": "any"
     },
-		{
+    {
       "src": "https://guiwriter.vercel.app/icons/android/maskable_icon_x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
-	],
-	"theme_color": "#c44644",
+  ],
+  "theme_color": "#c44644",
   "background_color": "#25262b",
-	"display": "standalone",
-	"start_url": "https://guiwriter.vercel.app/",
-	"url": "https://guiwriter.vercel.app/",
-	"lang": "pt-BR",
-	"screenshots": [],
-	"description": "Blog of writings from GuiDevloper",
+  "display": "standalone",
+  "start_url": "https://guiwriter.vercel.app/",
+  "url": "https://guiwriter.vercel.app/",
+  "lang": "pt-BR",
+  "screenshots": [],
+  "description": "Blog of writings from GuiDevloper",
   "dir": "ltr",
   "scope": "/",
   "orientation": "portrait"

@@ -11,26 +11,24 @@ const isDarkMode = ref(true)
 
 onMounted(() => {
   const html = document.documentElement
-
-  isDarkMode.value = html.classList.contains('dark')
+  const darkChosen = () => html.getAttribute('data-theme') === 'dark'
+  isDarkMode.value = darkChosen()
 
   // watch theme change
   const observer = new MutationObserver(() => {
-    isDarkMode.value = html.classList.contains('dark')
+    isDarkMode.value = darkChosen()
   })
 
-  observer.observe(html, {
-    attributeFilter: ['class'],
-    attributes: true
-  })
+  observer.observe(html, { attributeFilter: ['data-theme'] })
 
-  onUnmounted(() => {
-    observer.disconnect()
-  })
+  onUnmounted(() => observer.disconnect())
 })
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
 .giscus
-  margin-bottom: 3rem
+  // margin-bottom: 3rem
+
+.vp-comment
+  padding 0 1.5rem
 </style>

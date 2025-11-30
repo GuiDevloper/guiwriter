@@ -1,48 +1,11 @@
-import type { App, DefaultThemeOptions, PluginObject } from 'vuepress'
-import { fs, path } from '@vuepress/utils'
-import mediumZoomPlugin from '@vuepress/plugin-medium-zoom'
-import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
-import { readingTimePlugin } from '@renovamen/vuepress-plugin-reading-time'
-import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { blogPlugin } from 'vuepress-plugin-blog2'
-import type { CustomPage } from '../components/view-utils'
+import { blogPlugin } from '@vuepress/plugin-blog'
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
+import { readingTimePlugin } from '@vuepress/plugin-reading-time'
+import type { Plugin, PluginObject } from 'vuepress'
+import type { CustomPage, CustomThemeOptions } from '../types'
+import { SITE_LOGO } from '../components/view-utils'
 
-export type ThemeOptions = DefaultThemeOptions & {
-  site_name: string
-  hostname: string
-  author: {
-    name: string
-    twitter?: string
-  }
-}
-
-const noMismatchPlugin: PluginObject = {
-  name: 'no-mismatch-plugin',
-  onGenerated(app: App) {
-    const indexFilePath = path.join(app.dir.dest(), 'index.html')
-    const indexFile = fs.readFileSync(indexFilePath, 'utf-8')
-    // try to add width/height to logo
-    try {
-      const newIndexFile = indexFile.replace(
-        'src="/icons/android/android-launchericon-72-72.png"',
-        'src="/icons/android/android-launchericon-72-72.png" width="35px" height="35px"'
-      )
-      fs.writeFileSync(indexFilePath, newIndexFile)
-    } catch {}
-    const frameworkMatch = indexFile.match(/assets\/framework.[a-z0-9]+.js/g)
-    if (!frameworkMatch) return
-
-    const frameworkFilePath = path.join(app.dir.dest(), frameworkMatch[0])
-    const frameworkFile = fs.readFileSync(frameworkFilePath, 'utf-8')
-    const newFrameworkFile = frameworkFile.replace(
-      'console.error("Hydration completed but contains mismatches.")',
-      'false'
-    )
-    fs.writeFileSync(frameworkFilePath, newFrameworkFile)
-  }
-}
-
-export function seoPlugin(options: ThemeOptions): PluginObject {
+export function seoPlugin(options: CustomThemeOptions): PluginObject {
   return {
     name: 'vuepress-plugin-seo',
     extendsPage(page: CustomPage) {
@@ -62,7 +25,8 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
       const ctx = {
         siteTitle: options.site_name,
         title: page.frontmatter.title || page.title || 'Home',
-        description: page.frontmatter.description || '',
+        description:
+          page.frontmatter.description || page.frontmatter.tagline || '',
         author: page.frontmatter.author || options.author,
         tags: page.frontmatter.tags,
         twitterCard: 'summary_large_image',
@@ -70,7 +34,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
         url: options.hostname + page.path,
         image: page.frontmatter.Image
           ? page.frontmatter.Image.url
-          : page.frontmatter.image,
+          : page.frontmatter.image || SITE_LOGO,
         publishedAt: page.frontmatter.date
           ? new Date(page.frontmatter.date).toISOString()
           : ''
@@ -95,6 +59,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
         ['og:image', ctx.image]
       ])
       add('name', [['twitter:card', ctx.twitterCard]])
+      add('name', [['description', ctx.description]])
 
       if (page.frontmatter.Image?.alt) {
         add('name', [['twitter:image:alt', page.frontmatter.Image.alt]])
@@ -128,7 +93,7 @@ export function seoPlugin(options: ThemeOptions): PluginObject {
   }
 }
 
-export function getPlugins(options: ThemeOptions): PluginObject[] {
+export function getPlugins(options: CustomThemeOptions): Plugin[] {
   return [
     mediumZoomPlugin({
       selector: '.zoom-img',
@@ -136,12 +101,7 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
         background: '#212530'
       }
     }),
-    sitemapPlugin({
-      hostname: options.hostname
-    }),
-    readingTimePlugin,
-    noMismatchPlugin,
-    pwaPlugin(),
+    readingTimePlugin(),
     seoPlugin(options),
     blogPlugin({
       filter: ({ filePathRelative, frontmatter }) => {
@@ -152,7 +112,7 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
         if (filePathRelative.startsWith('archives/')) return false
 
         // drop those pages which do not use default layout
-        if (frontmatter.heroText || frontmatter.layout) return false
+        if (frontmatter.home || frontmatter.layout) return false
 
         return true
       },
@@ -164,8 +124,8 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
           tags: frontmatter.tags || [],
           excerpt: frontmatter.excerpt || '',
           title: frontmatter.title || '',
-          image: frontmatter.image || '',
-          thumbnail: frontmatter.thumbnail || frontmatter.image,
+          image: frontmatter.image || SITE_LOGO,
+          thumbnail: frontmatter.thumbnail || frontmatter.image || SITE_LOGO,
           permalink: frontmatter.permalink || ''
         }
 
@@ -174,7 +134,7 @@ export function getPlugins(options: ThemeOptions): PluginObject[] {
       category: [
         {
           key: 'tag',
-          getter: ({ frontmatter }: CustomPage) => frontmatter.tags
+          getter: ({ frontmatter }: CustomPage) => frontmatter.tags || []
         }
       ]
     })

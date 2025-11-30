@@ -1,5 +1,7 @@
-.toggle-sidebar-button
+/*
+.vp-toggle-sidebar-button
   display block
+*/
 
 div[class*="language-"] pre,
 div[class*="language-"] pre[class*="language-"]
@@ -21,37 +23,49 @@ div[class*="language-"]::before
 .page .theme-default-content
   padding-top 2rem
 
-.navbar, .sidebar
-  background rgba(255, 255, 255, 80%)
-  backdrop-filter blur(3px)
+.vp-navbar, .vp-sidebar
+  background var(--navbarBgColor)
+  // backdrop-filter blur(3px)
   border none
 
-.sidebar
+.vp-sidebar
   padding 0
   margin-top 3.6rem
 
-.dark
-  .navbar
-    background transparent
-  .sidebar
-    background rgba(37, 38, 43, 80%)
-
 .blog-date-reading
   margin 0
-  &.reading-no-image
-    margin-top 2.6rem
 
 .page
   padding-top 0
   padding-bottom 0
 
-.navbar
+/*
+.vp-navbar
   padding .7rem 1.5rem .7rem 4rem
+*/
 
-.navbar .site-name
+.vp-navbar .site-name
   color var(--textColor)
 
-.theme-container .search-box input
+.vp-navbar .route-link
+  padding 0.5rem
+  margin-left -0.5rem
+
+.vp-navbar .vp-toggle-color-mode-button
+  padding 0.5rem
+
+.vp-navbar .external-link
+  padding 0.3rem
+
+.line-numbers-mode
+  pre
+    margin 0 !important
+    padding 0 !important
+  &:after, .line-numbers
+    display none
+
+
+.vp-theme-container .search-box input
   background-color transparent !important
   background-image url(/icons/search.svg)
   background-size 1rem
@@ -59,22 +73,32 @@ div[class*="language-"]::before
 
 .blog-link
   color inherit
-  transition 200ms
+  transition 200ms !important
   &.active
-    color #3eaf7c
+    color var(--vp-c-accent) !important
   &:hover
-    text-decoration underline
-    color #3eaf7c
+    text-decoration underline !important
+    color var(--vp-c-accent) !important
+
+#content a
+  text-decoration none
 
 /**
  * transition fade-slide-y
- */
+ *
 .fade-slide-y-enter-active,
 .fade-slide-y-leave-active
-  transition all 100ms ease
+  transition-duration 500ms
+
+.fade-in-down-enter-active,
+.fade-in-down-leave-to,
+.fade-in-down-leave-from,
+.fade-in-down-leave-active
+  transition-duration 50ms !important
 
 .no-transition .page
-  transition none
+  transition-duration 500ms
+*/
 
 // add dots to pause post
 .dots
@@ -94,20 +118,16 @@ div[class*="language-"]::before
   font-size 15px
   text-align center
 
-.sw-update-popup {
-  color #2c3e50 !important
-}
-
 .back-to-top {
   display block
 }
 
 .back-blog
-  margin 0
-  display flex
-  flex-direction column
+  margin 0 auto
+  margin-bottom 1rem
+  // display flex
+  // flex-direction column
   &.not-full
-    margin var(--navbar-height) auto 0
     max-width 740px
   img
     width 100%
@@ -116,7 +136,7 @@ div[class*="language-"]::before
 
 @media (max-width: 959px)
   .back-blog:not(.not-full)
-    padding-top var(--navbar-height)
+    // padding-top var(--navbar-height)
   .publish-date
     display block
   .reading-time-separator

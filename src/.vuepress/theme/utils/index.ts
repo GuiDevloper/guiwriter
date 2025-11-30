@@ -1,18 +1,10 @@
-import { path, fs } from '@vuepress/utils'
-import { CustomPageFrontmatter } from 'theme/components/view-utils'
-import { fileURLToPath } from 'url'
-import { DefaultThemeOptions, SidebarGroup } from 'vuepress'
-import matter from 'gray-matter'
 export * from './plugins'
 
-export type ThemeOptions = DefaultThemeOptions & {
-  site_name: string
-  hostname: string
-  author: {
-    name: string
-    twitter?: string
-  }
-}
+import type { SidebarLinkOptions } from '@vuepress/theme-default'
+import matter from 'gray-matter'
+import { fileURLToPath } from 'url'
+import { fs, path } from 'vuepress/utils'
+import type { CustomPageFrontmatter } from '../types'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export const postsDir = path.resolve(process.cwd(), 'src')
@@ -59,21 +51,28 @@ export function getSidebar() {
   const files = fs.readdirSync(postsDir, {
     withFileTypes: true
   })
+  let authorRoute = null
   let final = files.reduce((acc, file) => {
     if (!file.isDirectory() || file.name === '.vuepress') return acc
     const { data } = matter(
       fs.readFileSync(path.join(postsDir, file.name, 'README.md'), 'utf8')
     )
-    acc.push({
+    const link = {
       text: data.title,
-      link: data.permalink,
-      children: []
-      // collapsible: true,
-    })
+      link: data.permalink
+      // children: []
+      // collapsible: true
+    }
+    if (data.permalink === '/links/') {
+      authorRoute = link
+    } else {
+      acc.push(link)
+    }
     // acc[existIndex].children.push(href)
     return acc
-  }, [] as SidebarGroup[])
+  }, [] as SidebarLinkOptions[])
   final = final.sort((a, b) => a.text.length - b.text.length)
-  final.unshift({ text: 'Home', link: '/', children: [] })
+  final.unshift(authorRoute)
+  // final.unshift({ text: 'Home', link: '/' })
   return final
 }

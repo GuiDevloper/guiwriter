@@ -6,22 +6,19 @@ excerpt: '<em>“In my restless dreams... I see that town”</em>.<br>Como esse 
 Image:
   {
     alt: 'Cachorro da raça Shiba sorrindo de satisfação',
-    url: 'https://ik.imagekit.io/GuiDevloper/guiwriter/games/sh2.jpg',
-    desc: "Foto de <a href='https://unsplash.com/@dearskye' target='_blank' rel='nofollow noopener noreferrer'>Christal Yuen</a> no Unsplash",
+    url: '/images/sh2.webp',
+    description: "Foto de <a href='https://unsplash.com/@dearskye' target='_blank' rel='nofollow noopener noreferrer'>Christal Yuen</a> no Unsplash",
     full: true
   }
 description: 'Mergulhando nos frutos de boa atuação que podem transformar a experiência e vida de jogadores.'
-image: 'https://ik.imagekit.io/GuiDevloper/guiwriter/games/sh2.jpg'
-thumbnail: 'https://ik.imagekit.io/GuiDevloper/guiwriter/games/thumbnails/sh2.jpg?updatedAt=1682559531584'
+image: '/images/sh2.webp'
+thumbnail: '/images/thumbs/sh2.webp'
 permalink: /games/sh2
 tags:
   - 'silent-hill'
 ---
 
 # Silent Hill 2: Terror que pode nos Tornar mais Humanos?
-
-> - Índice
->   [[toc]]
 
 Após ter escolhido este título do terror e procurado aproveitá-lo ao máximo até seu fim, passei a perceber que ainda restavam ideias a serem melhores processadas acerca desta obra, além das mudanças que podem gerar na percepção do jogador acerca do mundo.<br>
 As mudanças que senti foram a inspiração para este texto.

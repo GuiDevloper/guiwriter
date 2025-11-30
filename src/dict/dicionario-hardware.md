@@ -6,15 +6,16 @@ excerpt: 'Este é um Hello World com utilidade, nada melhor do que testar este a
 Image:
   {
     alt: 'Banner escrito: Meu Dicionário de Hardware (Atualizável) - Este é um Hello World com utilidade, nada melhor do que testar este ambiente com algo leve como uma lista de palavras sérias e seus significados (não tão sérios assim) 🤡🚀.',
-    url: '/thumbs/dicionario-hardware.png',
+    url: '/images/dicionario-hardware.webp',
     full: false
   }
 description: 'Este é um Hello World com utilidade, nada melhor do que testar este ambiente com algo leve como uma lista de palavras sérias e seus significados (não tão sérios assim) 🤡🚀.'
-image: '/thumbs/dicionario-hardware.png'
-thumbnail: '/thumbs/dicionario-hardware.png'
+image: '/images/dicionario-hardware.webp'
+thumbnail: '/images/thumbs/dicionario-hardware.webp'
 permalink: /dict/dicionario-hardware
 tags:
   - 'hardware'
+sidebar: false
 ---
 
 # Meu Dicionário de Hardware (Atualizável)

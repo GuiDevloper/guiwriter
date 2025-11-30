@@ -1,10 +1,12 @@
-import { Plugin, defineUserConfig } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
+import type { DefaultThemePluginsOptions } from '@vuepress/theme-default'
+import { HeadConfig, Plugin, Theme, defineUserConfig } from 'vuepress'
 import CustomTheme from './theme'
 
-import searchPlugin from '@vuepress/plugin-search'
-import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
-import { clipboardPlugin } from 'vuepress-plugin-clipboard'
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { commentPlugin } from '@vuepress/plugin-comment'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { searchPlugin } from '@vuepress/plugin-search'
+
 function getUserPlugins(): Plugin[] {
   return [
     searchPlugin({
@@ -14,18 +16,13 @@ function getUserPlugins(): Plugin[] {
         }
       }
     }),
-    pwaPopupPlugin({
+    pwaPlugin({
       locales: {
         '/': {
-          message: 'Novo conteúdo disponível.',
-          buttonText: 'Atualizar'
+          update: 'Novo conteúdo disponível.',
+          install: 'Atualizar'
         }
       }
-    }),
-    clipboardPlugin({
-      successText: 'Copiado!',
-      align: 'top',
-      staticIcon: true
     }),
     commentPlugin({
       provider: 'Giscus',
@@ -43,36 +40,30 @@ function getUserPlugins(): Plugin[] {
   ]
 }
 
-export default defineUserConfig({
-  title: 'GuiWriter',
-  theme: CustomTheme({
-    lastUpdated: false,
-    logo: '/icons/android/android-launchericon-72-72.png',
-    colorMode: 'dark',
-    openInNewWindow: 'Abrir em nova aba',
-    toggleColorMode: 'Trocar tema',
-    toggleSidebar: 'Alternar sidebar',
-    site_name: 'GuiWriter',
-    author: {
-      name: 'GuiDevloper',
-      twitter: 'GuiDevloper'
-    },
-    hostname: 'https://guiwriter.vercel.app',
-    navbar: [
-      {
-        text: 'Autor',
-        link: 'https://beacons.ai/GuiDevloper',
-        ariaLabel: 'Links do Autor'
+function getThemePlugins(): DefaultThemePluginsOptions {
+  return {
+    copyCode: {
+      showInMobile: true,
+      locales: {
+        '/': {
+          copied: 'Copiado!',
+          copy: 'Copiar'
+        }
       }
-    ]
-  }),
-  markdown: {
-    code: {
-      lineNumbers: false
+    },
+    backToTop: {
+      progress: false,
+      locales: {
+        '/': {
+          backToTop: 'Voltar ao topo'
+        }
+      }
     }
-  },
-  plugins: getUserPlugins(),
-  head: [
+  }
+}
+
+function getUserHeadTags(): HeadConfig[] {
+  return [
     [
       'link',
       {
@@ -102,7 +93,44 @@ export default defineUserConfig({
         content: 'width=device-width, initial-scale=1'
       }
     ]
-  ],
+  ]
+}
+
+function getTheme(): Theme {
+  return CustomTheme({
+    lastUpdated: false,
+    logo: '/icons/android/android-launchericon-72-72.png',
+    colorMode: 'dark',
+    openInNewWindow: 'Abrir em nova aba',
+    toggleColorMode: 'Trocar tema',
+    toggleSidebar: 'Alternar sidebar',
+    site_name: 'GuiWriter',
+    author: {
+      name: 'GuiDevloper',
+      twitter: 'GuiDevloper'
+    },
+    hostname: 'https://guiwriter.vercel.app',
+    /*
+    navbar: [
+      {
+        text: 'Autor',
+        link: 'https://beacons.ai/GuiDevloper',
+        ariaLabel: 'Links do Autor'
+      }
+    ],
+    */
+    themePlugins: getThemePlugins()
+  })
+}
+
+export default defineUserConfig({
+  title: 'GuiWriter',
+  theme: getTheme(),
+  bundler: viteBundler(),
+  plugins: getUserPlugins(),
+  head: getUserHeadTags(),
+  // disabling as service work already does
+  shouldPrefetch: false,
   locales: {
     '/': {
       lang: 'pt-BR'
